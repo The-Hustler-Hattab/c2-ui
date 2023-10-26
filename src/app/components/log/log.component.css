@@ -1,0 +1,46 @@
+
+/* 
+headers
+*/
+.mdc-data-table__header-cell {
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  outline: none;
+  text-align: left;
+  background-color: beige;
+  color: darkslategray; 
+  border-bottom: 1px solid #000; /* Add a 1px solid black border to the header row */
+  /* resize: horizontal !important;   */
+  overflow:hidden !important;
+
+
+}
+.mdc-data-table__header-cell:hover{
+  border-right: thick double #4b4b4b;
+  border-left: thick double #4b4b4b;
+
+  /* cursor: col-resize !important; */
+
+}
+.mdc-data-table__header-cell.resizable {
+  cursor: col-resize;
+}
+
+
+.zebra-even {
+  background-color: #f5f5dc !important; 
+  cursor: pointer;
+}
+
+.zebra-odd {
+  background-color: #ffffff !important; 
+  cursor: pointer;
+}
+
+.zebra-odd:hover, .zebra-even:hover  {
+  background-color:  rgb(194, 226, 235) !important;
+}
+
+
+
