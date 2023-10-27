@@ -1,12 +1,14 @@
 import { AfterViewInit, Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { EXAMPLE_DATA } from './log-datasource';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material/icon';
+import {  MatIconRegistry } from '@angular/material/icon';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 export interface LogItem {
   id: number;
   name: string;
@@ -15,7 +17,15 @@ export interface LogItem {
 @Component({
   selector: 'app-log',
   templateUrl: './log.component.html',
-  styleUrls: ['./log.component.css']
+  styleUrls: ['./log.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
+
 })
 export class LogComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -24,7 +34,6 @@ export class LogComponent implements AfterViewInit {
 
   dataSource: MatTableDataSource<LogItem>;
   displayedColumns: string[] = ['id', 'name'];
-
   columns: any[] = [
     { name: 'id', title: 'ID' },
     { name: 'name', title: 'Name' },

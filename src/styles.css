@@ -1,4 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
-
+/* 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+/* body {
+    --text-color: #222;
+    --bkg-color: #fff;
+    --btn-txt-color: white;
+    --btn-bg-color: rgb(11, 88, 160);
+  }
+  body.dark-theme {
+    --text-color: #eee;
+    --bkg-color: #252222;
+    --btn-txt-color: rgb(46, 43, 43);
+    --btn-bg-color: rgb(20, 211, 195);
+  }
+  
+  body {
+    background: var(--bkg-color);
+  }
+  
+  h1,
+  p {
+    color: var(--text-color);
+  } */
+
+  body.dark-mode {
+    background-color: #2d3436 !important;
+    color: #dfe6e9 !important;
+  }
+  
+  body.light-mode {
+    background-color: #dfe6e9 !important;
+    color: #2d3436 !important;
+  }

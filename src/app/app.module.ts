@@ -19,12 +19,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {A11yModule} from '@angular/cdk/a11y';
 import {CdkDragHandle, DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
-import {NgIf, JsonPipe} from '@angular/common';
+import {NgIf, JsonPipe, NgFor} from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,6 @@ import { HttpClientModule } from '@angular/common/http';
     ConsoleComponent,
     PawnedLogComponent,
     LogComponent,
-    // LogComponent,
     
 
   ],
@@ -61,7 +61,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatNativeDateModule,
     MatIconModule,
     HttpClientModule,
-
+    NgFor,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
