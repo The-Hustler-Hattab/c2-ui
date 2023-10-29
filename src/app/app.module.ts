@@ -7,13 +7,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { ConsoleComponent } from './components/console/console.component';
-import { PawnedLogComponent } from './components/pawned-log/pawned-log.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { LogComponent } from './components/log/log.component';
+import { LogComponent } from './components/pawned-log/log.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {A11yModule} from '@angular/cdk/a11y';
@@ -26,6 +25,9 @@ import {FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ErrorComponent } from './components/error/error.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -34,8 +36,9 @@ import { MatButtonModule } from '@angular/material/button';
     AboutComponent,
     HomeComponent,
     ConsoleComponent,
-    PawnedLogComponent,
     LogComponent,
+    PageNotFoundComponent,
+    ErrorComponent,
     
 
   ],
@@ -63,6 +66,7 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     NgFor,
     MatButtonModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

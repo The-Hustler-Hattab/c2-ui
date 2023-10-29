@@ -1,18 +1,23 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component,  ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { EXAMPLE_DATA } from './log-datasource';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import {  MatIconRegistry } from '@angular/material/icon';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
+
+
 export interface LogItem {
-  id: number;
   name: string;
+  id: number;
+  weight: number;
+  symbol: string;
+
 }
+
 
 @Component({
   selector: 'app-log',
@@ -27,25 +32,49 @@ export interface LogItem {
   ],
 
 })
+
+
 export class LogComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<LogItem>;
 
   dataSource: MatTableDataSource<LogItem>;
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['id', 'name', 'weight','symbol'];
+  columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
+  expandedElement: LogItem | null;
+
+  EXAMPLE_DATA: LogItem[] = [
+  {id: 1, name: 'Hydrogen', weight:10.51, symbol: 'H'},
+  {id: 2, name: 'Helium', weight:10, symbol: 'He'},
+  {id: 3, name: 'Lithium', weight:10, symbol: 'Li'},
+  {id: 4, name: 'Beryllium', weight:10, symbol: 'Be'},
+  {id: 5, name: 'Boron', weight:10, symbol: 'Bo'},
+  {id: 6, name: 'Carbon', weight:10, symbol: 'C'},
+  {id: 7, name: 'Nitrogen', weight:10, symbol: 'N'},
+  {id: 8, name: 'Oxygen', weight:10, symbol: 'O'},
+  {id: 9, name: 'Fluorine', weight:10, symbol: 'Fl'},
+  {id: 10, name: 'Neon', weight:10, symbol: 'Ne'},
+
+];
+
   columns: any[] = [
     { name: 'id', title: 'ID' },
     { name: 'name', title: 'Name' },
+    { name: 'weight', title: 'Weight' },
+    { name: 'symbol', title: 'Symbol' },
+
+
   ];
 
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
-    this.dataSource = new MatTableDataSource<LogItem>(EXAMPLE_DATA);
+    this.dataSource = new MatTableDataSource<LogItem>(this.EXAMPLE_DATA);
     this.matIconRegistry.addSvgIcon(
       'filter',
       this.domSanitizer.bypassSecurityTrustResourceUrl('assets/search.svg')
     );
   }
+
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;

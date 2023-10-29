@@ -10,7 +10,7 @@ headers
   text-align: left;
   background-color: beige;
   color: darkslategray; 
-  border-bottom: 1px solid #000; /* Add a 1px solid black border to the header row */
+  border-bottom: 1px solid #000;
   /* resize: horizontal !important;   */
   overflow:hidden !important;
 
@@ -28,19 +28,14 @@ headers
 }
 
 
-.zebra-even {
+.paige {
   background-color: #f5f5dc !important; 
   cursor: pointer;
 }
 
-.zebra-odd {
-  background-color: #ffffff !important; 
-  cursor: pointer;
-}
 
-.zebra-odd:hover, .zebra-even:hover  {
+
+ .paige:hover  {
   background-color:  rgb(194, 226, 235) !important;
 }
-
-
 

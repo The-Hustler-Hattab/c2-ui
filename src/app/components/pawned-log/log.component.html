@@ -6,7 +6,6 @@
     <div class="col-md-3">
       <mat-form-field>
         <mat-label>Filter</mat-label>
-         <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
          <div class="row">
           <div class="col-md-10">
             <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
@@ -19,7 +18,7 @@
 
       </mat-form-field>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-7">
       <mat-form-field>
         <mat-label>Enter a date range</mat-label>
         <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
@@ -32,6 +31,18 @@
         <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
         <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
       </mat-form-field>
+
+    </div>
+
+    <div class="col-md-2">
+      <!-- <button class="btn btn-primary" >
+        <i class="fas fa-sync-alt"></i> Refresh
+      </button> -->
+      <button mat-fab extended color="white">
+        <!-- <mat-icon>favorite</mat-icon> -->
+        <i class="fas fa-sync-alt"></i> Refresh
+
+      </button>
 
     </div>
   </div>
@@ -52,14 +63,12 @@
               cdkDropListOrientation="horizontal"
               [dataSource]="dataSource"
               (cdkDropListDropped)="tableDrop($event)"
-              matSort>
-
+              matSort
+              multiTemplateDataRows
+              >
 
       <ng-container *ngFor="let column of columns; let i = index"
                     [matColumnDef]="column.name">
-      <th    
-      
-      >
         <mat-header-cell 
         mat-header-cell 
         *matHeaderCellDef  
@@ -68,24 +77,36 @@
         cdkDropListDropped="onHeaderDragged($event)"
         cdkDrag
         >
-
           {{ column.title }}
         </mat-header-cell >
-      </th >
 
-        <mat-cell mat-cell *matCellDef="let element">{{ element[column.name] }}</mat-cell>
 
+
+        <mat-cell mat-cell 
+        *matCellDef="let element"
+        (click)="expandedElement = expandedElement === element ? null : element"
+        >{{ element[column.name] }}</mat-cell>
+             
       </ng-container>
 
+      <ng-container matColumnDef="expandedDetail">
+        <mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+          {{ element.symbol }}
+        </mat-cell>
+      </ng-container>
+
+
       <mat-header-row *matHeaderRowDef="displayedColumns"
-                      class="tableHeaderRow"
-                      #tableHeaderRow></mat-header-row>
+      class="tableHeaderRow"
+      #tableHeaderRow>
+      </mat-header-row>
+      
       <mat-row 
-      *matRowDef="let row; columns: displayedColumns; let even = even; let odd = odd"
-      [ngClass]="{'zebra-even': even, 'zebra-odd': odd}"
+      *matRowDef="let row; columns: displayedColumns; "
+      class="paige"
       ></mat-row>
-
-
+    
+      <mat-row *matRowDef="let row; columns: ['expandedDetail']" [style.display]="expandedElement === row ? 'table-row' : 'none'"></mat-row>
 
 
     </mat-table>
@@ -94,8 +115,11 @@
     [length]="dataSource?.data?.length"
     [pageIndex]="0"
     [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 20]"
+    [pageSizeOptions]="[5, 10, 20, 50]"
     aria-label="Select page">
     </mat-paginator>
+    
   </div>
 </div>
+
+
