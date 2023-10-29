@@ -28,6 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ErrorComponent } from './components/error/error.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -66,7 +68,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HttpClientModule,
     NgFor,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

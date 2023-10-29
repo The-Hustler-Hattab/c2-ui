@@ -18,7 +18,7 @@
 
       </mat-form-field>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-3">
       <mat-form-field>
         <mat-label>Enter a date range</mat-label>
         <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
@@ -34,18 +34,30 @@
 
     </div>
 
-    <div class="col-md-2">
-      <!-- <button class="btn btn-primary" >
-        <i class="fas fa-sync-alt"></i> Refresh
-      </button> -->
-      <button mat-fab extended color="white">
-        <!-- <mat-icon>favorite</mat-icon> -->
-        <i class="fas fa-sync-alt"></i> Refresh
-
+    <div class="col-md-4">
+      <mat-form-field >
+        <mat-label>Retrieve Count</mat-label>
+        <input matInput   [formControl]="count" type="number" required (keyup.enter)="count.valid && openSnackBar()">
+        <mat-error *ngIf="count.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <button color="primary" mat-fab extended (click)="openSnackBar()" *ngIf="count.valid"  class="margin-change" >
+        Retrieve
       </button>
-
     </div>
+
+    <div class="col-md-2">
+      <button mat-fab extended color="primary" class="margin-change-up">
+        <i class="fas fa-sync-alt"></i > Refresh
+      </button>
+    </div>
+    
+
+
   </div>
+
+  
+
+
   <div *ngIf="range.controls.start.value && range.controls.end.value">
     <p>Selected date range: {{ range.controls.start.value | date:'MM/dd/yyyy' }} - {{ range.controls.end.value | date:'MM/dd/yyyy' }}</p>
   </div>
@@ -54,8 +66,9 @@
   
   
   
-  <div 
+<div 
   class="mat-elevation-z8"
+  style="overflow-x: auto "
    >
 
 
@@ -90,14 +103,43 @@
       </ng-container>
 
       <ng-container matColumnDef="expandedDetail">
-        <mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
-          {{ element.symbol }}
+        <mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+
+            <table class="table " *ngIf="element.sessionFiles.length != 0; else doesNotHaveFiles">
+
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>File</th>
+                      <th>File Status</th>
+                      <th>Created At</th>
+                      <th>Download</th>
+                  </tr>
+              </thead>
+              <colgroup>
+ 
+              </colgroup>
+              <tbody>
+                    <tr *ngFor="let sessionFile of element.sessionFiles">
+                      <td >{{ sessionFile.id }}</td>
+                      <td >{{ sessionFile.file }}</td>
+                      <td>{{ sessionFile.fileStatus }}</td>
+                      <td>{{ sessionFile.createdAt }}</td>
+                      <td><button mat-fab color="primary" [disabled]="sessionFile.fileStatus === 'FILE_DELETED'"  ><mat-icon>cloud_download</mat-icon></button> 
+                    </td>
+     
+
+                  </tr>
+              </tbody>
+          </table>
+          <ng-template #doesNotHaveFiles>
+            <p class="no-files-message">No files available</p>
+          </ng-template>
         </mat-cell>
       </ng-container>
 
 
       <mat-header-row *matHeaderRowDef="displayedColumns"
-      class="tableHeaderRow"
       #tableHeaderRow>
       </mat-header-row>
       
@@ -106,20 +148,20 @@
       class="paige"
       ></mat-row>
     
-      <mat-row *matRowDef="let row; columns: ['expandedDetail']" [style.display]="expandedElement === row ? 'table-row' : 'none'"></mat-row>
+      <mat-row  *matRowDef="let row; columns: ['expandedDetail']" [style.display]="expandedElement === row ? 'table-row' : 'none'"></mat-row>
 
 
     </mat-table>
 
-    <mat-paginator #paginator
-    [length]="dataSource?.data?.length"
-    [pageIndex]="0"
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 20, 50]"
-    aria-label="Select page">
-    </mat-paginator>
-    
   </div>
-</div>
 
+  <mat-paginator #paginator
+  [length]="dataSource?.data?.length"
+  [pageIndex]="0"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20, 50]"
+  aria-label="Select page">
+  </mat-paginator>
+
+</div>
 
