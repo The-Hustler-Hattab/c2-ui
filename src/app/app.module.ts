@@ -21,14 +21,17 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {NgIf, JsonPipe, NgFor} from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import {FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ErrorComponent } from './components/error/error.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { LogTableService } from './services/log/log-table.service';
 
 
 @NgModule({
@@ -41,6 +44,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     LogComponent,
     PageNotFoundComponent,
     ErrorComponent,
+    LoadingSpinnerComponent,
     
 
   ],
@@ -70,8 +74,10 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     MatButtonModule,
     MatTooltipModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule
+    
   ],
-  providers: [],
+  providers: [LogTableService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

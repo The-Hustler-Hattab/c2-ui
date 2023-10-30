@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import { Observable, map } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 import { PawnedLogItem } from '../models/pawned-logs.model';
 
 export const  ApiConstants = {
@@ -26,6 +26,9 @@ export const  ApiConstants = {
 })
 export class RestApiService {
 
+
+
+
   private apiUrl = environment.rooturl;
 
   constructor(private http: HttpClient) { }
@@ -35,13 +38,14 @@ export class RestApiService {
     const url = `${this.apiUrl}${ApiConstants.LOGS_API_PATH}${ApiConstants.GET_N_LOGS}?count=${count}`;
     console.log(url);
   
-    return this.http.get<{ msg: string; statusCode: number; sessionLogEntities: PawnedLogItem[] }>
-      (url)
-        .pipe(
-          map(
-            response => response.sessionLogEntities
-          )
+    const output: Observable<PawnedLogItem[]> = this.http.get<{ msg: string; statusCode: number; sessionLogEntities: PawnedLogItem[] }>
+    (url)
+      .pipe(
+        map(
+          response => response.sessionLogEntities
         )
+      )
+    return output
   }
 
 
