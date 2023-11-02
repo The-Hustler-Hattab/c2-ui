@@ -13,24 +13,21 @@ export class LogTableService  {
   logData: PawnedLogItem[] = []
   private intialDataCount: number=50;
 
-  constructor(private api: RestApiService, private loadingService: LoadingSpinnerService) {
+  constructor(private api: RestApiService) {
     this.getNDataForTable(this.intialDataCount);
    }
 
    public  getNDataForTable(count: number) {
-    this.loadingService.show();
     this.api.getNLogs(count).subscribe((response: PawnedLogItem[]) => {
       this.logData= response;
       
       this.logDataSubject.next(this.logData);
 
       console.log(response);
-      this.loadingService.hide();
       
     },
       (error: any) => {
         console.error(error);
-        this.loadingService.hide();
       }
 
     )
