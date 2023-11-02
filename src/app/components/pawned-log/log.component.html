@@ -46,7 +46,7 @@
     </div>
 
     <div class="col-md-2">
-      <button mat-fab extended color="primary" class="margin-change-up">
+      <button mat-fab extended color="primary" class="margin-change-up" (click)="refresh()">
         <i class="fas fa-sync-alt"></i > Refresh
       </button>
     </div>
@@ -55,11 +55,7 @@
 
   </div>
 
-  
-
-
-  <div *ngIf="range.controls.start.value && range.controls.end.value">
-    <p>Selected date range: {{ range.controls.start.value | date:'MM/dd/yyyy' }} - {{ range.controls.end.value | date:'MM/dd/yyyy' }}</p>
+  <div *ngIf="range.controls.start.value && range.controls.end.value && getDataBetween2Dates(range.controls.start.value , range.controls.end.value  )">
   </div>
   
   

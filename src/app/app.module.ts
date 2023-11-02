@@ -18,7 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {A11yModule} from '@angular/cdk/a11y';
 import {CdkDragHandle, DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkTableModule} from '@angular/cdk/table';
-import {NgIf, JsonPipe, NgFor} from '@angular/common';
+import {NgIf, JsonPipe, NgFor, DatePipe} from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -78,10 +78,11 @@ import { AuthRoutingModule } from './auth-routing.module';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     OAuthModule.forRoot(),
-    AuthRoutingModule
+    AuthRoutingModule,
+    
     
   ],
-  providers: [LogTableService],
+  providers: [LogTableService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

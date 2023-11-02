@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { PawnedLogItem } from 'src/app/models/pawned-logs.model';
 import { LogTableService } from 'src/app/services/log/log-table.service';
 import { Subscription } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -76,7 +77,8 @@ export class LogComponent implements  OnInit, AfterViewInit{
 
   constructor(private matIconRegistry: MatIconRegistry, 
     private domSanitizer: DomSanitizer, private snackBar: MatSnackBar
-    , private logService: LogTableService) {
+    , private logService: LogTableService,
+    private datePipe: DatePipe) {
           
     this.matIconRegistry.addSvgIcon(
       'filter',
@@ -125,6 +127,40 @@ export class LogComponent implements  OnInit, AfterViewInit{
       console.log('The value is null');
     }
 
+  }
+
+  refresh(){
+    
+
+    this.logService.getNDataForTable(this.logService.intialDataCount);
+    this.attachTableMaterialsToDataSource();
+
+  }
+
+  getDataBetween2Dates(start:Date, end: Date): boolean  {
+    
+    console.log(this.datePipe.transform(start, 'MM/dd/yyyy'));
+    console.log(this.datePipe.transform(end, 'MM/dd/yyyy'));
+
+
+    
+    this.logService.getDataForTableBetween2Dates(this.transformToDate(start),
+    this.transformToDate(end));
+
+    this.attachTableMaterialsToDataSource();
+    
+    this.range.reset()
+    
+    return true
+   
+  }
+  private transformToDate(date:Date): string{
+    const retDate = this.datePipe.transform(date, 'MM/dd/yyyy')
+    if (retDate != undefined) {
+      return retDate.toString()
+    }else{
+      throw "Invalid date provided"
+    }
 
   }
   

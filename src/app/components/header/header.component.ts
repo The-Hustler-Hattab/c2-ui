@@ -17,7 +17,7 @@ export class HeaderComponent {
 
 
   testGetNLogs(): void{
-    this.apiService.getNLogs(5).subscribe((response : PawnedLogItem[]) =>{
+    this.apiService.getLogsBetween2Dates('06/01/2023', '11/30/2023').subscribe((response : PawnedLogItem[]) =>{
       console.log(response);
       
     }

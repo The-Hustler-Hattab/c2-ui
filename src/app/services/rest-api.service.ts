@@ -38,14 +38,28 @@ export class RestApiService {
     const url = `${this.apiUrl}${ApiConstants.LOGS_API_PATH}${ApiConstants.GET_N_LOGS}?count=${count}`;
     console.log(url);
   
-    const output: Observable<PawnedLogItem[]> = this.http.get<{ msg: string; statusCode: number; sessionLogEntities: PawnedLogItem[] }>
+
+    return this.getLogs(url)
+  }
+
+  getLogsBetween2Dates(start:string, end:string ): Observable<PawnedLogItem[]> {
+
+    const url: string = `${this.apiUrl}${ApiConstants.LOGS_API_PATH}${ApiConstants.GET_LOGS_BETWEEN_2_DATES}?start=${start}&finish=${end}`;
+    console.log(url);
+  
+
+    return this.getLogs(url)
+  }
+
+  private getLogs(url: string): Observable<PawnedLogItem[]> {
+
+    return this.http.get<{ msg: string; statusCode: number; sessionLogEntities: PawnedLogItem[] }>
     (url)
       .pipe(
         map(
           response => response.sessionLogEntities
         )
       )
-    return output
   }
 
 

@@ -4,13 +4,16 @@ import { Inject, Injectable } from '@angular/core';
 import { OKTA_AUTH } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { LoadingSpinnerService } from '../services/loading-spinner.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
 
 
-  constructor(@Inject(OKTA_AUTH) private oktaAuth: OktaAuth, private loadingSpinner: LoadingSpinnerService) {
+  constructor(@Inject(OKTA_AUTH) private oktaAuth: OktaAuth,
+   private loadingSpinner: LoadingSpinnerService,
+   private router : Router) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -45,6 +48,7 @@ export class AuthInterceptor implements HttpInterceptor {
         if (error instanceof HttpErrorResponse) {
           console.error('HTTP error:', error);
           this.loadingSpinner.hide()
+          this.router.navigate(['/error'], {queryParams: {error: error.message}} )
 
         }
         return throwError(error); // Re-throw the error to propagate it

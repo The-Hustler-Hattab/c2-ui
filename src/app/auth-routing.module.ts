@@ -4,7 +4,7 @@ import {  RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
-import { AuthInterceptor } from './okta/auth.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 const oktaConfig = {
   issuer: 'https://dev-54597357.okta.com/oauth2/default',
