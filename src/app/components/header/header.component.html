@@ -40,6 +40,23 @@
 
             </ul>
 
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link active"
+                    *ngIf="(authService.authState$ | async)?.isAuthenticated" (click)="logout()" style="cursor:pointer">Log out</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" 
+                    *ngIf="!(authService.authState$ | async)?.isAuthenticated" (click)="login()" style="cursor:pointer">Log in</a>
+                </li>
+<!-- 
+                <li class="nav-item active">
+                    <a class="nav-link" 
+                     (click)="print()" href="#">print</a>
+                </li> -->
+
+                
+            </ul>
             
         </div>
     </div>

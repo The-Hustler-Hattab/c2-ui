@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { LogComponent } from './components/pawned-log/log.component';
 import { ConsoleComponent } from './components/console/console.component';
 import { ErrorComponent } from './components/error/error.component';
+import { OktaCallbackComponent } from '@okta/okta-angular';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -14,8 +15,9 @@ const routes: Routes = [
   {path:"about", component: AboutComponent},
   {path:"s3-files", component: AboutComponent},
   {path:"console", component: ConsoleComponent},
-  { path: 'page-not-found', component: PageNotFoundComponent},
-  { path: 'error', component: ErrorComponent},
+  {path: 'page-not-found', component: PageNotFoundComponent},
+  {path: 'error', component: ErrorComponent},
+  {path: 'callback', component: OktaCallbackComponent},
 
   { path: '**', redirectTo:'page-not-found'},
 

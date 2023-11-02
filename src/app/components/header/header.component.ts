@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { DarkModeService } from 'angular-dark-mode';
+import { Component, Inject } from '@angular/core';
 import { PawnedLogItem } from 'src/app/models/pawned-logs.model';
 import { RestApiService } from 'src/app/services/rest-api.service';
+import { OktaAuth } from '@okta/okta-auth-js';
+import { OKTA_AUTH, OktaAuthStateService } from '@okta/okta-angular';
 
 @Component({
   selector: 'app-header',
@@ -11,19 +12,34 @@ import { RestApiService } from 'src/app/services/rest-api.service';
 export class HeaderComponent {
 
 
-  constructor(private  apiService:RestApiService ) {}
+  constructor(private  apiService:RestApiService,
+     @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public authService: OktaAuthStateService,  ) {}
 
 
   testGetNLogs(): void{
     this.apiService.getNLogs(5).subscribe((response : PawnedLogItem[]) =>{
       console.log(response);
       
-
     }
     , error=>{
       
     }
     )
+  }
+
+  login(){
+
+    this.oktaAuth.signInWithRedirect();
+    console.log("logged in");
+
+
+  }
+
+  logout(){
+    this.oktaAuth.signOut();
+    console.log("logged out");
+
+    // this.token.emit("")
   }
 
 

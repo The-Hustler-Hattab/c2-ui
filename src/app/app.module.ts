@@ -32,6 +32,8 @@ import { MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { LogTableService } from './services/log/log-table.service';
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { AuthRoutingModule } from './auth-routing.module';
 
 
 @NgModule({
@@ -74,7 +76,9 @@ import { LogTableService } from './services/log/log-table.service';
     MatButtonModule,
     MatTooltipModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    OAuthModule.forRoot(),
+    AuthRoutingModule
     
   ],
   providers: [LogTableService],
