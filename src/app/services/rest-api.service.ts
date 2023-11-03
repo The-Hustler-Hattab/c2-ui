@@ -62,5 +62,33 @@ export class RestApiService {
       )
   }
 
+  getS3File(file: string) {
+    const url: string = `${this.apiUrl}${ApiConstants.S3_API_PATH}${ApiConstants.GET_S3_FILE}?file=${file}`;
 
+    this.http.get(url, {responseType: 'blob'}).subscribe((data: Blob) => {
+      this.saveFile(data,file)
+    
+    }
+    
+    
+    )
+
+  }
+
+  private saveFile(blobData: Blob, fileName: string) {
+    const downloadLink = document.createElement('a');
+    const url = window.URL.createObjectURL(blobData);
+    downloadLink.href = url;
+    downloadLink.download = this.getFileNameFromPath(fileName); 
+    downloadLink.click();
+    window.URL.revokeObjectURL(url); 
+  }
+
+  private getFileNameFromPath(fullPath: string): string {
+    const parts = fullPath.split('/');
+    if (parts.length > 0) {
+      return parts[parts.length - 1];
+    }
+    return fullPath; // Return the original string if no '/' is found
+  }
 }

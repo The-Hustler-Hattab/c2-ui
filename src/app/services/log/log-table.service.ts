@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { RestApiService } from '../rest-api.service';
 import { PawnedLogItem } from 'src/app/models/pawned-logs.model';
 import { Subject } from 'rxjs';
-import { LoadingSpinnerService } from '../loading-spinner.service';
+
 
 @Injectable({
   providedIn: 'root'

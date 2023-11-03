@@ -12,6 +12,7 @@ import { PawnedLogItem } from 'src/app/models/pawned-logs.model';
 import { LogTableService } from 'src/app/services/log/log-table.service';
 import { Subscription } from 'rxjs';
 import { DatePipe } from '@angular/common';
+import { S3Service } from 'src/app/services/s3/s3.service';
 
 
 
@@ -78,7 +79,8 @@ export class LogComponent implements  OnInit, AfterViewInit{
   constructor(private matIconRegistry: MatIconRegistry, 
     private domSanitizer: DomSanitizer, private snackBar: MatSnackBar
     , private logService: LogTableService,
-    private datePipe: DatePipe) {
+    private datePipe: DatePipe,
+    private s3Service: S3Service) {
           
     this.matIconRegistry.addSvgIcon(
       'filter',
@@ -189,6 +191,10 @@ export class LogComponent implements  OnInit, AfterViewInit{
 
   tableDrop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.displayedColumns, event.previousIndex, event.currentIndex);
+  }
+
+  getFile(fileName: string){
+    this.s3Service.getFile(fileName);
   }
 
 

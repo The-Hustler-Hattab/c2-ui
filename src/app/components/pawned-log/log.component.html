@@ -121,7 +121,7 @@
                       <td >{{ sessionFile.file }}</td>
                       <td>{{ sessionFile.fileStatus }}</td>
                       <td>{{ sessionFile.createdAt }}</td>
-                      <td><button mat-fab color="primary" [disabled]="sessionFile.fileStatus === 'FILE_DELETED'"  ><mat-icon>cloud_download</mat-icon></button> 
+                      <td><button mat-fab color="primary" [disabled]="sessionFile.fileStatus === 'FILE_DELETED'" (click)="getFile(sessionFile.file)"  ><mat-icon>cloud_download</mat-icon></button> 
                     </td>
      
 

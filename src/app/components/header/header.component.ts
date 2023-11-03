@@ -17,14 +17,17 @@ export class HeaderComponent {
 
 
   testGetNLogs(): void{
-    this.apiService.getLogsBetween2Dates('06/01/2023', '11/30/2023').subscribe((response : PawnedLogItem[]) =>{
-      console.log(response);
+    this.apiService.getS3File('c7607391-ebeb-0dd6-1572-1bc3d3b7c780/2023-10-24_19-06-pom.xml');
+    
+    
+    // this.apiService.getLogsBetween2Dates('06/01/2023', '11/30/2023').subscribe((response : PawnedLogItem[]) =>{
+    //   console.log(response);
       
-    }
-    , error=>{
+    // }
+    // , error=>{
       
-    }
-    )
+    // }
+    // )
   }
 
   login(){
