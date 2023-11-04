@@ -11,17 +11,11 @@
     &:hover {
       background-color: #e0e0e0; /* Change the background color when hovered */
     }
-    
+
   }
 
   .custom-column {
-    flex-basis: 10%; /* Adjust this value to control the width */
-    max-width: 10%; /* Match flex-basis to ensure it's a fixed width */
+    flex-basis: 34.51%;
+    max-width: 40%;
   }
   
-  @media (min-width: 50px) {
-    .custom-column {
-      flex-basis: 34.51%;
-      max-width: 40%;
-    }
-  }
