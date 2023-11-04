@@ -1,0 +1,20 @@
+.clickable-file {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: #f0f0f0; /* Add a background color to distinguish file items */
+    margin-bottom: 4px; /* Add margin between file items */
+  }
+
+  .custom-column {
+    flex-basis: 10%; /* Adjust this value to control the width */
+    max-width: 10%; /* Match flex-basis to ensure it's a fixed width */
+  }
+  
+  @media (min-width: 50px) {
+    .custom-column {
+      flex-basis: 35%;
+      max-width: 40%;
+    }
+  }

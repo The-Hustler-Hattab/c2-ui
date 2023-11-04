@@ -12,8 +12,7 @@ export class FolderComponent {
 
 
   onFileClicked(file: Section) {
-    // Implement the behavior you want when a file is clicked
-    // For example, you can open the file or perform some other action.
+
     console.log('File clicked:', file);
   }
 

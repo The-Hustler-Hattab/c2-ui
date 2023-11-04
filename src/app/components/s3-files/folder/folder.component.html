@@ -12,20 +12,18 @@
       <ng-container *ngFor="let item of folder.subfolders">
         <mat-expansion-panel *ngIf="item.type === 'folder'">
           <mat-expansion-panel-header>
+
             <mat-panel-title>
               <mat-icon matListIcon>folder</mat-icon>
               {{ item.name }}
             </mat-panel-title>
             <mat-panel-description>{{ item.updated | date }}</mat-panel-description>
           </mat-expansion-panel-header>
+          
           <app-folder *ngIf="item.subfolders && item.subfolders.length" [folder]="item"></app-folder>
         </mat-expansion-panel>
+        <app-file [file]="item"></app-file>
         
-        <a  ><mat-panel-title *ngIf="item.type === 'file'" class="clickable-file" (click)="onFileClicked(item)">
-          <mat-icon matListItemIcon>description</mat-icon>
-          {{ item.name }}
-        </mat-panel-title>
-        </a>
       </ng-container>
     </mat-expansion-panel>
   </mat-accordion>

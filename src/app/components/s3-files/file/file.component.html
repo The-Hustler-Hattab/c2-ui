@@ -1,0 +1,14 @@
+<div class="row">
+
+    <a>
+        <mat-panel-title *ngIf="file.type === 'file'" class="clickable-file" (click)="onFileClicked(file)">
+
+            <div class="col-md-4 custom-column">
+                <mat-icon matListItemIcon>description</mat-icon>
+                {{ file.name }}
+            </div>
+
+            <mat-panel-description>{{ file.updated | date }}</mat-panel-description>
+        </mat-panel-title>
+    </a>
+</div>

@@ -39,6 +39,8 @@ import {MatListModule} from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { FolderComponent } from './components/s3-files/folder/folder.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { FoldersComponent } from './components/s3-files/folders/folders.component';
+import { FileComponent } from './components/s3-files/file/file.component';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     LoadingSpinnerComponent,
     S3FilesComponent,
     FolderComponent,
+    FoldersComponent,
+    FileComponent,
     
 
   ],

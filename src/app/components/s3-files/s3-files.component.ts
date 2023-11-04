@@ -7,6 +7,8 @@ export interface Section {
   updated: Date;
   type: 'folder' | 'file'; // Indicate whether it's a folder or a file
   subfolders?: Section[];
+  path?: string; // Add the path property
+
 }
 
 @Component({
@@ -18,7 +20,7 @@ export class S3FilesComponent {
   filteredFolders: Section[] = [];
   searchTerm = '';
 
-  folderName: string = "S3 C2 Folder"
+
 
 
 constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer,){
@@ -56,6 +58,7 @@ constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomS
               name: 'Sample.txt',
               updated: new Date('3/15/16'),
               type: 'file',
+              path: 'path'
             }
           ],
         },
@@ -70,12 +73,11 @@ constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomS
       name: 'Sample.txt',
       updated: new Date('3/15/16'),
       type: 'file',
+      path: 'Sample.txt'
     },
   ];
 
-  getFolders(): Section[] {
-    return this.searchTerm ? this.filteredFolders : this.folders;
-  }
+
 
   searchFolders() {
     const searchTerm = this.searchTerm.toLowerCase();
@@ -103,10 +105,5 @@ constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomS
 
 
 
-  onFileClicked(file: Section) {
-    // Implement the behavior you want when a file is clicked
-    // For example, you can open the file or perform some other action.
-    console.log('File clicked:', file);
-  }
 
 }

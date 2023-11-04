@@ -1,7 +1,7 @@
 <div class="container">
 
   <mat-form-field>
-    
+
     <mat-label>Search</mat-label>
     <div class="row">
       <div class="col-md-10">
@@ -14,105 +14,11 @@
 
   </mat-form-field>
 
-  <mat-list *ngIf="filteredFolders.length!=0">
-    <div mat-subheader>{{folderName}}</div>
-    <mat-accordion>
-      <ng-container *ngFor="let item of filteredFolders">
-        <mat-expansion-panel *ngIf="item.type === 'folder'">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon matListIcon>folder</mat-icon>
-              {{ item.name }}
-            </mat-panel-title>
-            <mat-panel-description>{{ item.updated | date }}</mat-panel-description>
-          </mat-expansion-panel-header>
-        </mat-expansion-panel>
-        
-        <app-folder *ngIf="item.subfolders && item.subfolders.length" [folder]="item"></app-folder>
-        
-        <a ><mat-list-item *ngIf="item.type === 'file'"  class="clickable-file" (click)="onFileClicked(item)">
-            <mat-icon matListItemIcon>description</mat-icon>
-            <div matListItemTitle>{{ item.name }}</div>
-            <div matListItemLine>{{ item.updated | date }}</div>
-          </mat-list-item></a>
+  <div *ngIf="filteredFolders.length==0; else filteredData">
+    <app-folders [folders]="folders"></app-folders>
+  </div>
 
-      </ng-container>
-    </mat-accordion>
-  </mat-list>
-
-
-
-  <mat-list *ngIf="filteredFolders.length==0">
-    <div mat-subheader>{{folderName}}</div>
-    <mat-accordion>
-      <ng-container *ngFor="let item of folders">
-        <mat-expansion-panel *ngIf="item.type === 'folder'">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon matListIcon>folder</mat-icon>
-              {{ item.name }}
-            </mat-panel-title>
-            <mat-panel-description>{{ item.updated | date }}</mat-panel-description>
-          </mat-expansion-panel-header>
-          <app-folder *ngIf="item.subfolders && item.subfolders.length" [folder]="item"></app-folder>
-        </mat-expansion-panel>
-        
-        <a ><mat-list-item *ngIf="item.type === 'file'"  class="clickable-file" (click)="onFileClicked(item)">
-          <mat-icon matListItemIcon>description</mat-icon>
-          <div matListItemTitle>{{ item.name }}</div>
-          <div matListItemLine>{{ item.updated | date }}</div>
-        </mat-list-item></a>
-
-      </ng-container>
-    </mat-accordion>
-  </mat-list>
-
-
-
+  <ng-template #filteredData>
+    <app-folders [folders]="filteredFolders"></app-folders>
+  </ng-template>
 </div>
-
-
-<!-- <div class="container">
-    <mat-form-field>
-      <mat-label>Search</mat-label>
-      <div class="row">
-        <div class="col-md-10">
-          <input matInput [(ngModel)]="searchTerm" (input)="searchFolders()">
-        </div>
-        <div class="col-md-1">
-          <mat-icon svgIcon="filter"></mat-icon>
-        </div>
-      </div>
-    </mat-form-field>
-  
-    <mat-list>
-      <div mat-subheader>{{ folderName }}</div>
-      <mat-accordion>
-        <ng-container *ngFor="let item of getFolders()">
-          <mat-expansion-panel *ngIf="item.type === 'folder'">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <mat-icon matListIcon>folder</mat-icon>
-                {{ item.name }}
-              </mat-panel-title>
-              <mat-panel-description>{{ item.updated | date }}</mat-panel-description>
-            </mat-expansion-panel-header>
-          </mat-expansion-panel>
-          <ng-container *ngIf="item.type === 'file'; else folderContent">
-            <a (click)="onFileClicked(item)">
-              <mat-list-item class="clickable-file">
-                <mat-icon matListItemIcon>description</mat-icon>
-                <div matListItemTitle>{{ item.name }}</div>
-                <div matListItemLine>{{ item.updated | date }}</div>
-              </mat-list-item>
-            </a>
-          </ng-container>
-          <ng-template #folderContent>
-            <app-folder *ngIf="item.subfolders && item.subfolders.length" [folder]="item"></app-folder>
-          </ng-template>
-        </ng-container>
-      </mat-accordion>
-    </mat-list>
-  </div> -->
-
-  

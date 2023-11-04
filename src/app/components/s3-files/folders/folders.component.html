@@ -1,0 +1,20 @@
+<mat-list>
+    <div mat-subheader>{{folderName}}</div>
+    <mat-accordion>
+        <ng-container *ngFor="let item of folders">
+            <mat-expansion-panel *ngIf="item.type === 'folder'">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon matListIcon>folder</mat-icon>
+                        {{ item.name }}
+                    </mat-panel-title>
+                    <mat-panel-description>{{ item.updated | date }}</mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-folder *ngIf="item.subfolders && item.subfolders.length" [folder]="item"></app-folder>
+            </mat-expansion-panel>
+
+            <app-file [file]="item"></app-file>
+
+        </ng-container>
+    </mat-accordion>
+</mat-list>
