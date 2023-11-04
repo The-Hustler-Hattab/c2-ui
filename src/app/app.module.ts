@@ -34,6 +34,11 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { LogTableService } from './services/log/log-table.service';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { AuthRoutingModule } from './auth-routing.module';
+import { S3FilesComponent } from './components/s3-files/s3-files.component';
+import {MatListModule} from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { FolderComponent } from './components/s3-files/folder/folder.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -47,6 +52,8 @@ import { AuthRoutingModule } from './auth-routing.module';
     PageNotFoundComponent,
     ErrorComponent,
     LoadingSpinnerComponent,
+    S3FilesComponent,
+    FolderComponent,
     
 
   ],
@@ -79,6 +86,10 @@ import { AuthRoutingModule } from './auth-routing.module';
     MatProgressSpinnerModule,
     OAuthModule.forRoot(),
     AuthRoutingModule,
+    MatListModule,
+    MatDividerModule,
+    DatePipe,
+    MatExpansionModule
     
     
   ],

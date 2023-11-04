@@ -1,22 +1,20 @@
-
-
-
 <div class="container">
   <div class="row">
     <div class="col-md-3">
       <mat-form-field>
+
         <mat-label>Filter</mat-label>
-         <div class="row">
+        <div class="row">
           <div class="col-md-10">
             <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
           </div>
           <div class="col-md-1">
             <mat-icon svgIcon="filter"></mat-icon>
           </div>
-         </div> 
- 
-
+        </div>
       </mat-form-field>
+
+
     </div>
     <div class="col-md-3">
       <mat-form-field>
@@ -35,98 +33,83 @@
     </div>
 
     <div class="col-md-4">
-      <mat-form-field >
+      <mat-form-field>
         <mat-label>Retrieve Count</mat-label>
-        <input matInput   [formControl]="count" type="number" required (keyup.enter)="count.valid && openSnackBar()">
+        <input matInput [formControl]="count" type="number" required (keyup.enter)="count.valid && openSnackBar()">
         <mat-error *ngIf="count.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
-      <button color="primary" mat-fab extended (click)="openSnackBar()" *ngIf="count.valid"  class="margin-change" >
+      <button color="primary" mat-fab extended (click)="openSnackBar()" *ngIf="count.valid" class="margin-change">
         Retrieve
       </button>
     </div>
 
     <div class="col-md-2">
       <button mat-fab extended color="primary" class="margin-change-up" (click)="refresh()">
-        <i class="fas fa-sync-alt"></i > Refresh
+        <i class="fas fa-sync-alt"></i> Refresh
       </button>
     </div>
-    
+
 
 
   </div>
 
-  <div *ngIf="range.controls.start.value && range.controls.end.value && getDataBetween2Dates(range.controls.start.value , range.controls.end.value  )">
+  <div
+    *ngIf="range.controls.start.value && range.controls.end.value && getDataBetween2Dates(range.controls.start.value , range.controls.end.value  )">
   </div>
-  
-  
-  
-  
-  
-<div 
-  class="mat-elevation-z8"
-  style="overflow-x: auto "
-   >
 
 
-    <mat-table cdkDropList 
-              cdkDropListOrientation="horizontal"
-              [dataSource]="dataSource"
-              (cdkDropListDropped)="tableDrop($event)"
-              matSort
-              multiTemplateDataRows
-              >
 
-      <ng-container *ngFor="let column of columns; let i = index"
-                    [matColumnDef]="column.name">
-        <mat-header-cell 
-        mat-header-cell 
-        *matHeaderCellDef  
-        mat-sort-header 
-        cdkDragBoundary="mat-header-row"
-        cdkDropListDropped="onHeaderDragged($event)"
-        cdkDrag
-        >
+
+
+  <div class="mat-elevation-z8" style="overflow-x: auto ">
+
+
+    <mat-table cdkDropList cdkDropListOrientation="horizontal" [dataSource]="dataSource"
+      (cdkDropListDropped)="tableDrop($event)" matSort multiTemplateDataRows>
+
+      <ng-container *ngFor="let column of columns; let i = index" [matColumnDef]="column.name">
+        <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header cdkDragBoundary="mat-header-row"
+          cdkDropListDropped="onHeaderDragged($event)" cdkDrag>
           {{ column.title }}
-        </mat-header-cell >
+        </mat-header-cell>
 
 
 
-        <mat-cell mat-cell 
-        *matCellDef="let element"
-        (click)="expandedElement = expandedElement === element ? null : element"
-        >{{ element[column.name] }}</mat-cell>
-             
+        <mat-cell mat-cell *matCellDef="let element"
+          (click)="expandedElement = expandedElement === element ? null : element">{{ element[column.name] }}</mat-cell>
+
       </ng-container>
 
       <ng-container matColumnDef="expandedDetail">
         <mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
 
-            <table class="table " *ngIf="element.sessionFiles.length != 0; else doesNotHaveFiles">
+          <table class="table " *ngIf="element.sessionFiles.length != 0; else doesNotHaveFiles">
 
-              <thead>
-                  <tr>
-                      <th>#</th>
-                      <th>File</th>
-                      <th>File Status</th>
-                      <th>Created At</th>
-                      <th>Download</th>
-                  </tr>
-              </thead>
-              <colgroup>
- 
-              </colgroup>
-              <tbody>
-                    <tr *ngFor="let sessionFile of element.sessionFiles">
-                      <td >{{ sessionFile.id }}</td>
-                      <td >{{ sessionFile.file }}</td>
-                      <td>{{ sessionFile.fileStatus }}</td>
-                      <td>{{ sessionFile.createdAt }}</td>
-                      <td><button mat-fab color="primary" [disabled]="sessionFile.fileStatus === 'FILE_DELETED'" (click)="getFile(sessionFile.file)"  ><mat-icon>cloud_download</mat-icon></button> 
-                    </td>
-     
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>File</th>
+                <th>File Status</th>
+                <th>Created At</th>
+                <th>Download</th>
+              </tr>
+            </thead>
+            <colgroup>
 
-                  </tr>
-              </tbody>
+            </colgroup>
+            <tbody>
+              <tr *ngFor="let sessionFile of element.sessionFiles">
+                <td>{{ sessionFile.id }}</td>
+                <td>{{ sessionFile.file }}</td>
+                <td>{{ sessionFile.fileStatus }}</td>
+                <td>{{ sessionFile.createdAt }}</td>
+                <td><button mat-fab color="primary" [disabled]="sessionFile.fileStatus === 'FILE_DELETED'"
+                    (click)="getFile(sessionFile.file)"><mat-icon>cloud_download</mat-icon></button>
+                </td>
+
+
+              </tr>
+            </tbody>
           </table>
           <ng-template #doesNotHaveFiles>
             <p class="no-files-message">No files available</p>
@@ -135,29 +118,21 @@
       </ng-container>
 
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"
-      #tableHeaderRow>
+      <mat-header-row *matHeaderRowDef="displayedColumns" #tableHeaderRow>
       </mat-header-row>
-      
-      <mat-row 
-      *matRowDef="let row; columns: displayedColumns; "
-      class="paige"
-      ></mat-row>
-    
-      <mat-row  *matRowDef="let row; columns: ['expandedDetail']" [style.display]="expandedElement === row ? 'table-row' : 'none'"></mat-row>
+
+      <mat-row *matRowDef="let row; columns: displayedColumns; " class="paige"></mat-row>
+
+      <mat-row *matRowDef="let row; columns: ['expandedDetail']"
+        [style.display]="expandedElement === row ? 'table-row' : 'none'"></mat-row>
 
 
     </mat-table>
 
   </div>
 
-  <mat-paginator #paginator
-  [length]="dataSource?.data?.length"
-  [pageIndex]="0"
-  [pageSize]="10"
-  [pageSizeOptions]="[5, 10, 20, 50]"
-  aria-label="Select page">
+  <mat-paginator #paginator [length]="dataSource?.data?.length" [pageIndex]="0" [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 20, 50]" aria-label="Select page">
   </mat-paginator>
 
 </div>
-

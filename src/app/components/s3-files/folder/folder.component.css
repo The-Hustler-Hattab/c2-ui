@@ -1,0 +1,14 @@
+.mat-expansion-panel-content {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+  }
+  
+  .clickable-file {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: #f0f0f0; /* Add a background color to distinguish file items */
+    margin-bottom: 4px; /* Add margin between file items */
+  }
