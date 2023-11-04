@@ -14,7 +14,7 @@
   
   @media (min-width: 50px) {
     .custom-column {
-      flex-basis: 35%;
+      flex-basis: 34.51%;
       max-width: 40%;
     }
   }
