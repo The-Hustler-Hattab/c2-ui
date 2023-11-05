@@ -88,12 +88,13 @@ import { FileComponent } from './components/s3-files/file/file.component';
     MatTooltipModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    OAuthModule.forRoot(),
     AuthRoutingModule,
     MatListModule,
     MatDividerModule,
     DatePipe,
     MatExpansionModule,
+    OAuthModule.forRoot(),
+
   ],
   providers: [LogTableService, DatePipe],
   bootstrap: [AppComponent]

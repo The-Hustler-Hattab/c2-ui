@@ -1,5 +1,4 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { NgxTerminalModule } from 'ngx-terminal';
 
 
 @Component({
