@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Section } from '../s3-files.component';
+import { S3Folder } from 'src/app/models/s3-folder.model';
 
 @Component({
   selector: 'app-folders',
@@ -7,11 +7,11 @@ import { Section } from '../s3-files.component';
   styleUrls: ['./folders.component.css']
 })
 export class FoldersComponent {
-  @Input() folders: Section[];
+  @Input() folders: S3Folder[];
   
   folderName: string = "S3 C2 Folder"
 
-  onFileClicked(item: Section) {
+  onFileClicked(item: S3Folder) {
     console.log(item);
     
   }

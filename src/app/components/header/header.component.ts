@@ -3,6 +3,7 @@ import { PawnedLogItem } from 'src/app/models/pawned-logs.model';
 import { RestApiService } from 'src/app/services/rest-api.service';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { OKTA_AUTH, OktaAuthStateService } from '@okta/okta-angular';
+import { S3Folder } from 'src/app/models/s3-folder.model';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,11 @@ export class HeaderComponent {
 
 
   testGetNLogs(): void{
-    this.apiService.getS3File('c7607391-ebeb-0dd6-1572-1bc3d3b7c780/2023-10-24_19-06-pom.xml');
+    this.apiService.listS3Files().subscribe((data: S3Folder[] )=>{
+      console.log(data);
+      
+    }
+    );
     
     
     // this.apiService.getLogsBetween2Dates('06/01/2023', '11/30/2023').subscribe((response : PawnedLogItem[]) =>{

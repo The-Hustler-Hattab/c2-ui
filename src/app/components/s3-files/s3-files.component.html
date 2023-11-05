@@ -1,18 +1,35 @@
 <div class="container">
 
-  <mat-form-field>
+  <div class="row">
+    <div class="col-md-10">
 
-    <mat-label>Search</mat-label>
-    <div class="row">
-      <div class="col-md-10">
-        <input matInput [(ngModel)]="searchTerm" (input)="searchFolders()">
-      </div>
-      <div class="col-md-1">
-        <mat-icon svgIcon="filter"></mat-icon>
-      </div>
+      <mat-form-field>
+
+        <mat-label>Search</mat-label>
+        <div class="row">
+          <div class="col-md-10">
+            <input matInput [(ngModel)]="searchTerm" (input)="searchFolders()">
+          </div>
+          <div class="col-md-1">
+            <mat-icon svgIcon="filter"></mat-icon>
+          </div>
+        </div>
+
+      </mat-form-field>
+
     </div>
 
-  </mat-form-field>
+    <div class="col-md-2">
+      <button mat-fab extended color="primary" class="margin-change-up" (click)="refresh()">
+        <i class="fas fa-sync-alt"></i> Refresh
+      </button>
+    </div>
+  </div>
+
+
+
+
+
 
   <div *ngIf="filteredFolders.length==0; else filteredData">
     <app-folders [folders]="folders"></app-folders>

@@ -1,26 +1,28 @@
 <div class="row">
 
     <a>
-        <mat-panel-title *ngIf="file.type === 'file'" class="clickable-file" (click)="onFileClicked(file)">
+        <mat-panel-title *ngIf="file.type === 'FILE'" class="clickable-file" >
             <div class="col-md-4 custom-column">
                 <mat-icon matListItemIcon>description</mat-icon>
                 {{ file.name }}
             </div>
             <div class="col-md-5">
-                <mat-panel-description>{{ file.updated | date }}</mat-panel-description>
+                <mat-panel-description>{{ file.updated  }}</mat-panel-description>
 
 
             </div>
 
             <div class="col-md-1">
 
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Download</button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
+                (click)="download(file)">Download</button>
 
             </div>
 
             <div class="col-md-1">
 
-                <button  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-2">Delete</button>
+                <button  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-2" 
+                (click)="delete(file)">Delete</button>
 
             </div>
 

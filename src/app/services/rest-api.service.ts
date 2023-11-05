@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { Observable, Subject, map } from 'rxjs';
 import { PawnedLogItem } from '../models/pawned-logs.model';
+import { S3Folder } from '../models/s3-folder.model';
 
 export const  ApiConstants = {
   LOGS_API_PATH: "/v1/api/logs",
@@ -13,6 +14,8 @@ export const  ApiConstants = {
   S3_API_PATH: "/v1/api/s3",
   GET_S3_FILE : "/getS3File",
   GET_JSON_FILES_IN_DIR : "/getJsonListFilesInDirectory",
+  GET_JSON_FILES : "/getJsonListFiles",
+
   DELETE_FILE : "/deleteFile",
 
   ACTUATOR_API_PATH: "/actuator",
@@ -91,4 +94,35 @@ export class RestApiService {
     }
     return fullPath; // Return the original string if no '/' is found
   }
+
+
+  listS3Files(): Observable<S3Folder[]>{
+    const url: string = `${this.apiUrl}${ApiConstants.S3_API_PATH}${ApiConstants.GET_JSON_FILES}`;
+    
+    
+    return this.http.get<{ msg: string; statusCode: number; s3FileStructureJsonModels: S3Folder[] }>
+    (url).pipe(map(
+      response => response.s3FileStructureJsonModels
+    ))
+  }
+
+  deleteS3File(filePath: string): Observable<{ msg: string; statusCode: number;  }>{
+    const url: string = `${this.apiUrl}${ApiConstants.S3_API_PATH}${ApiConstants.DELETE_FILE}?file=${filePath}`;
+    console.log(url);
+    
+    return this.http.delete<{ msg: string; statusCode: number;  }> (url)
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 }

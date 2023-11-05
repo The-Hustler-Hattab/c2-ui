@@ -5,11 +5,11 @@
     padding: 8px;
     background-color: #f0f0f0; /* Add a background color to distinguish file items */
     margin-bottom: 4px; /* Add margin between file items */
-    transition: background-color 0.3s; /* Add a smooth transition for the background color change */
+    transition: background-color 0.5s; /* Add a smooth transition for the background color change */
 
     /* Define styles for when the element is hovered */
     &:hover {
-      background-color: #e0e0e0; /* Change the background color when hovered */
+      background-color: #e8e8e8; /* Change the background color when hovered */
     }
 
   }
