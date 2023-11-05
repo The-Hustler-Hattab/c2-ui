@@ -93,9 +93,7 @@ import { FileComponent } from './components/s3-files/file/file.component';
     MatListModule,
     MatDividerModule,
     DatePipe,
-    MatExpansionModule
-    
-    
+    MatExpansionModule,
   ],
   providers: [LogTableService, DatePipe],
   bootstrap: [AppComponent]
