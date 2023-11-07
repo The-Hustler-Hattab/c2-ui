@@ -3,7 +3,8 @@
 
 <div class="container" >
     
-    <p-terminal #terminalComponent prompt="C2-ADMIN >>" (keydown)="onKeyDown($event)"  ></p-terminal>
+    <p-terminal #terminalComponent prompt="C2-ADMIN >>" (keydown)="onKeyDown($event)"  
+        [welcomeMessage]="'With Great Power Comes Great Responsibility...'"></p-terminal>
 
 
 
