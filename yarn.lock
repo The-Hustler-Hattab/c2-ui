@@ -161,7 +161,7 @@
     symbol-observable "4.0.0"
     yargs "17.7.2"
 
-"@angular/common@^16.0.0 || ^15.0.0 || ^14.0.0", "@angular/common@^16.0.0 || ^17.0.0", "@angular/common@^16.2.12", "@angular/common@>= 12.0.0", "@angular/common@>=14.0.0", "@angular/common@16.2.12":
+"@angular/common@^16.0.0 || ^15.0.0 || ^14.0.0", "@angular/common@^16.0.0 || ^17.0.0", "@angular/common@^16.2.0", "@angular/common@^16.2.12", "@angular/common@>= 12.0.0", "@angular/common@>=14.0.0", "@angular/common@16.2.12":
   version "16.2.12"
   resolved "https://registry.npmjs.org/@angular/common/-/common-16.2.12.tgz"
   integrity sha512-B+WY/cT2VgEaz9HfJitBmgdk4I333XG/ybC98CMC4Wz8E49T8yzivmmxXB3OD6qvjcOB6ftuicl6WBqLbZNg2w==
@@ -189,14 +189,14 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^16.0.0 || ^15.0.0 || ^14.0.0", "@angular/core@^16.0.0 || ^17.0.0", "@angular/core@^16.2.12", "@angular/core@>= 12.0.0", "@angular/core@>=10.0.0", "@angular/core@>=14.0.0", "@angular/core@16.2.12":
+"@angular/core@^16.0.0 || ^15.0.0 || ^14.0.0", "@angular/core@^16.0.0 || ^17.0.0", "@angular/core@^16.2.0", "@angular/core@^16.2.12", "@angular/core@>= 12.0.0", "@angular/core@>=10.0.0", "@angular/core@>=14.0.0", "@angular/core@16.2.12":
   version "16.2.12"
   resolved "https://registry.npmjs.org/@angular/core/-/core-16.2.12.tgz"
   integrity sha512-GLLlDeke/NjroaLYOks0uyzFVo6HyLl7VOm0K1QpLXnYvW63W9Ql/T3yguRZa7tRkOAeFZ3jw+1wnBD4O8MoUA==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/forms@^16.0.0 || ^17.0.0", "@angular/forms@^16.2.12":
+"@angular/forms@^16.0.0 || ^17.0.0", "@angular/forms@^16.2.0", "@angular/forms@^16.2.12":
   version "16.2.12"
   resolved "https://registry.npmjs.org/@angular/forms/-/forms-16.2.12.tgz"
   integrity sha512-1Eao89hlBgLR3v8tU91vccn21BBKL06WWxl7zLpQmG6Hun+2jrThgOE4Pf3os4fkkbH4Apj0tWL2fNIWe/blbw==
@@ -6304,6 +6304,13 @@ pretty-bytes@^5.3.0:
   resolved "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.6.0.tgz"
   integrity sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==
 
+primeng@^16.7.0:
+  version "16.7.0"
+  resolved "https://registry.npmjs.org/primeng/-/primeng-16.7.0.tgz"
+  integrity sha512-WHL+V08jjH2d3u3KiCpiYocV4m6qDd8VSvm40aqt+ovp7KJyx6UAnM8etVdeDj8OoI+yFyEmr+cakcdHhKZNTw==
+  dependencies:
+    tslib "^2.3.0"
+
 proc-log@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/proc-log/-/proc-log-3.0.0.tgz"
@@ -6620,7 +6627,7 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-"rxjs@^6.0.0 || ^7.0.0", "rxjs@^6.5.3 || ^7.4.0", rxjs@^7.5.5, rxjs@~7.8.0, rxjs@7.8.1:
+"rxjs@^6.0.0 || ^7.0.0", "rxjs@^6.0.0 || ^7.8.1", "rxjs@^6.5.3 || ^7.4.0", rxjs@^7.5.5, rxjs@~7.8.0, rxjs@7.8.1:
   version "7.8.1"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-7.8.1.tgz"
   integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==

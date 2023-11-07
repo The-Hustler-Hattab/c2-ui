@@ -89,8 +89,12 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+
+              "node_modules/primeng/resources/primeng.min.css"
+
             ],
             "scripts": []
           }

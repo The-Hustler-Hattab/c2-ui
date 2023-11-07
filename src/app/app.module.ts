@@ -41,6 +41,8 @@ import { FolderComponent } from './components/s3-files/folder/folder.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FoldersComponent } from './components/s3-files/folders/folders.component';
 import { FileComponent } from './components/s3-files/file/file.component';
+import { TerminalModule } from 'primeng/terminal';
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
@@ -93,10 +95,13 @@ import { FileComponent } from './components/s3-files/file/file.component';
     MatDividerModule,
     DatePipe,
     MatExpansionModule,
+    TerminalModule,
+    ToastModule,
+    
     OAuthModule.forRoot(),
 
   ],
-  providers: [LogTableService, DatePipe],
+  providers: [LogTableService, DatePipe,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

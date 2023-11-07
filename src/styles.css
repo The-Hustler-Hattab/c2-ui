@@ -1,36 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
-/* 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
-/* body {
-    --text-color: #222;
-    --bkg-color: #fff;
-    --btn-txt-color: white;
-    --btn-bg-color: rgb(11, 88, 160);
-  }
-  body.dark-theme {
-    --text-color: #eee;
-    --bkg-color: #252222;
-    --btn-txt-color: rgb(46, 43, 43);
-    --btn-bg-color: rgb(20, 211, 195);
-  }
-  
-  body {
-    background: var(--bkg-color);
-  }
-  
-  h1,
-  p {
-    color: var(--text-color);
-  } */
 
-  body.dark-mode {
-    background-color: #2d3436 !important;
-    color: #dfe6e9 !important;
-  }
+ @import 'node_modules/primeng/resources/themes/lara-light-blue/theme.css';
+
   
-  body.light-mode {
-    background-color: #dfe6e9 !important;
-    color: #2d3436 !important;
+  .p-terminal {
+    background-color: black;
+    color: white;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    padding: 10px; /* Add padding here */
+    height: 80vh; 
+    overflow: auto; 
+    position: relative;
+    overflow-y: auto;
+    white-space: pre-wrap;
+
   }
+
+
+
+
+/* Style the command output */
+.p-terminal-response {
+  color: #ff3f3f; /* White text for the command output */
+}
+
+
+
+
+
