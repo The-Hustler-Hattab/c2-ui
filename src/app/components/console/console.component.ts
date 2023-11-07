@@ -41,10 +41,7 @@ export class ConsoleComponent implements AfterViewInit, OnDestroy   {
       }); 
   }
   ngOnDestroy(): void {
-        // // Unsubscribe when the component is destroyed
-        // if (this.messageSubscription) {
-        //   this.messageSubscription.unsubscribe();
-        // }
+  
   }
 
 
@@ -129,6 +126,24 @@ export class ConsoleComponent implements AfterViewInit, OnDestroy   {
 
  
   onKeyDown(event: KeyboardEvent) {
+    this.arrowsEvent(event)
+    this.controlCEvent(event)
+    
+
+  }
+
+  private controlCEvent(event: KeyboardEvent){
+        // Check for Ctrl key (or Control key on Mac)
+        const isCtrlPressed = event.ctrlKey || event.metaKey;
+
+        // Check if the key pressed is 'c' (or 'C')
+        const isCPressed = event.key === 'c' || event.key === 'C';
+    
+        if (isCtrlPressed && isCPressed) {
+          this.terminalComponent.command = '';
+        }
+  }
+  private arrowsEvent(event: KeyboardEvent){
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
       const commandsLength = this.terminalComponent.commands.length;
 
@@ -148,6 +163,7 @@ export class ConsoleComponent implements AfterViewInit, OnDestroy   {
         this.terminalComponent.command = this.terminalComponent.commands[commandsLength - 1 - this.commandIndex].text;
       }
     }
+
   }
 
 
