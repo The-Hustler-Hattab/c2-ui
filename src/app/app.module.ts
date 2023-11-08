@@ -43,6 +43,7 @@ import { FoldersComponent } from './components/s3-files/folders/folders.componen
 import { FileComponent } from './components/s3-files/file/file.component';
 import { TerminalModule } from 'primeng/terminal';
 import {ToastModule} from 'primeng/toast';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {ToastModule} from 'primeng/toast';
     FolderComponent,
     FoldersComponent,
     FileComponent,
+    FooterComponent,
     
 
   ],
