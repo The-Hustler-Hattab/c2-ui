@@ -6,8 +6,12 @@
     <p-terminal #terminalComponent prompt="C2-ADMIN >>" (keydown)="onKeyDown($event)"  
         [welcomeMessage]="'With Great Power Comes Great Responsibility...'"></p-terminal>
 
-
-
+<hr>
+<div style="display: flex; justify-content: center;">
+    <button mat-fab extended color="primary" class="margin-change-up" (click)="reconnect()">
+      <i class="fas fa-sync-alt"></i> Reconnect
+    </button>
+  </div>
 
 </div>
 
