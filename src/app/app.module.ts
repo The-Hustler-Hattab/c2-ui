@@ -103,7 +103,7 @@ import { FooterComponent } from './components/footer/footer.component';
     OAuthModule.forRoot(),
 
   ],
-  providers: [LogTableService, DatePipe,],
+  providers: [LogTableService, DatePipe, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

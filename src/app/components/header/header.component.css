@@ -4,3 +4,7 @@
 }
 
 
+.pointer-cursor {
+    /* Change cursor style to pointer on hover */
+    cursor: pointer;
+  }

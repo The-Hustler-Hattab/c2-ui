@@ -3,6 +3,8 @@ import {  Terminal, TerminalModule, TerminalService } from 'primeng/terminal';
 import { WebsocketServiceService } from 'src/app/services/websocket-service.service';
 import { Subscription } from 'rxjs';
 import {MessageService} from 'primeng/api';
+import { ConsoleService } from 'src/app/services/console/console.service';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -22,12 +24,16 @@ export class ConsoleComponent implements AfterViewInit, OnDestroy   {
   private commandIndex = -1;
 
   constructor(private terminalService: TerminalService, private websocketService: WebsocketServiceService,
-    private messageService: MessageService) { 
+    private messageService: MessageService, private commandsConsoleService : ConsoleService) { 
     this.registerFunctions()
-    
-    this.terminalService.commandHandler.subscribe(command => { 
-      
 
+    console.log("check [+] "+ this.commandsConsoleService.commands);
+    
+
+
+    this.terminalService.commandHandler.subscribe(command => { 
+
+      
 
 
       const func = this.getFunction(command);
@@ -35,10 +41,10 @@ export class ConsoleComponent implements AfterViewInit, OnDestroy   {
         func();
         return
       }
+     
       console.log(this.terminalComponent.command);
       
-      
-      
+    
       if (this.isConnected) {
         this.proccessCommandsQueue.push(command)
         this.websocketService.sendMessage(command)
@@ -49,12 +55,23 @@ export class ConsoleComponent implements AfterViewInit, OnDestroy   {
 
   }
   ngOnDestroy(): void {
-  
+        // copy object to console service
+        this.commandsConsoleService.commands = _.cloneDeep(this.terminalComponent.commands)
   }
 
+  private maintainConsoleHistoryAfterNavigation():void{
+    if(this.commandsConsoleService.commands.length != 0){
+      this.terminalComponent.commands = this.commandsConsoleService.commands
+      this.terminalComponent.cd.detectChanges()
+
+    }
+  } 
 
   ngAfterViewInit(): void {
+    this.maintainConsoleHistoryAfterNavigation();
     this.connect()
+
+
 
     this.messageSubscription = this.websocketService.listen().subscribe((event: MessageEvent) => {
       const eventData: string = event.data
@@ -80,20 +97,28 @@ export class ConsoleComponent implements AfterViewInit, OnDestroy   {
       this.terminalComponent.cd.detectChanges()
 
       if (!this.deque()) {
-        this.terminalComponent.commands.push(
-          {
-            text:"[+] ServerMsg",
-            response: this.beautifyJson( eventData)
-          }
-  
-        )
-        this.terminalComponent.cd.detectChanges()
+        
+        this.appendServerMessageToConsole("[+] ServerMsg", this.beautifyJson( eventData))
+
 
       }
     
     });
         
   }
+
+  private appendServerMessageToConsole(text: string , response: string): void{
+    this.terminalComponent.commands.push(
+      {
+        text:text,
+        response:  response
+      }
+
+    )
+    this.terminalComponent.cd.detectChanges()
+
+  }
+
   private bulkRespond(eventData: string):void{
     let commands = this.terminalComponent.commands
     console.log(commands);
@@ -102,17 +127,8 @@ export class ConsoleComponent implements AfterViewInit, OnDestroy   {
     if (commands.length!=0) {
 
 
-      
-      this.terminalComponent.commands.push(
-        {
-          text:"[+] BULK-MSG",
-          response: eventData
-        }
+      this.appendServerMessageToConsole("[+] ServerMsg",  eventData)
 
-      )
-
-
-      this.terminalComponent.cd.detectChanges()
 
       
     }
