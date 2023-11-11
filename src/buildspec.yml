@@ -1,0 +1,27 @@
+version: 0.2
+env:
+  variables:
+    CACHE_CONTROL: "86400"
+    S3_BUCKET: "{{S3_BUCKET}}"
+    BUILD_FOLDER: "dist"
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm install
+      - npm install -g @angular/cli
+  post_build:
+    commands:
+      - echo Build started on `date`
+      - ng build --configuration production
+artifacts:
+  files:
+    - '**/**'
+  base-directory: 'dist/c2c-ui**'
+  # discard-paths: yes
