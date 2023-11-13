@@ -33,7 +33,7 @@ export class LogComponent implements  OnInit, AfterViewInit{
 
   dataSource: MatTableDataSource<PawnedLogItem>;
 
-  displayedColumns: string[] = [ 'id','sessionId', 'hasFiles', 'sessionRemoteAddress'
+  displayedColumns: string[] = [ 'id','sessionId', 'hasFiles', 'publicIp'
   , 'osName', 'osVersion', 'osArch', 'userName', 'userHome', 'userCurrentWorkingDir', 'userLanguage'
   , 'sessionCreatedAt', 'sessionClosedAt'];
 
@@ -41,7 +41,7 @@ export class LogComponent implements  OnInit, AfterViewInit{
   columns: any[] = [
     { name: 'id', title: 'ID' },
     { name: 'sessionId', title: 'Session Id' },
-    { name: 'sessionRemoteAddress', title: 'Session Remote Address' },
+    { name: 'publicIp', title: 'Public IP' },
     { name: 'sessionLocalAddress', title: 'Session Local Address' },
     { name: 'osName', title: 'OS Name' },
     { name: 'osVersion', title: 'OS Version' },

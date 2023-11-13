@@ -14,6 +14,8 @@ export interface PawnedLogItem {
     sessionFiles: SessionFile[];
     sessionCreatedAt: string;
     sessionClosedAt: string | null;
+    publicIp: string | null;
+
   }
 
 

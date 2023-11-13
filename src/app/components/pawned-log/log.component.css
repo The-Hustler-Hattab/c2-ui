@@ -14,8 +14,8 @@
 
 }
 
-.mat-column-sessionRemoteAddress {
-  flex: 0 0 16%;
+.mat-column-publicIp {
+  flex: 0 0 10%;
 
 }
 .mat-column-sessionCreatedAt{
