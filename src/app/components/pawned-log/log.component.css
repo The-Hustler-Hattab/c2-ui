@@ -39,11 +39,11 @@
 
 }
 .mat-column-userName    {
-  flex: 0 0 10%;
+  flex: 0 0 18%;
 
 }
 .mat-column-userHome    {
-  flex: 0 0 20%;
+  flex: 0 0 28%;
 
 }
 .mat-column-userCurrentWorkingDir    {
