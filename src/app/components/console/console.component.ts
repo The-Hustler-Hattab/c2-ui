@@ -80,8 +80,11 @@ export class ConsoleComponent implements AfterViewInit, OnDestroy   {
       
       if (eventData.toUpperCase().includes("RECEIVED_NEW_CONNECTION") ) {
         this.recivedNewConnection();
+        return;
       } else if (eventData.toUpperCase().includes("LOST_CONNECTION")) {
         this.LostConnection();
+        return;
+
       }
 //  the below will check if the json sent is comming in as command response and it will beuatify it and send it.
       if (this.checkJsonMessageToBeCommand(eventData)) {
