@@ -13,6 +13,10 @@ export class S3Service  {
 
   foldersSubject: Subject<S3Folder[]> = new Subject<S3Folder[]>();
 
+// this subject will only be triggered when there is delete invoked
+  deleteSubject: Subject<S3Folder> = new Subject<S3Folder>();
+
+
   
   
   
@@ -63,6 +67,9 @@ export class S3Service  {
           console.log(data);
           this.folders = this.removeFileFromFolders(fileName, this.folders);
           this.foldersSubject.next(this.folders)
+          this.deleteSubject.next(fileName)
+
+
         }
       );
     }
@@ -70,7 +77,7 @@ export class S3Service  {
 
   }
   
-  private removeFileFromFolders(folder: S3Folder, folders: S3Folder[]): S3Folder[] {
+  removeFileFromFolders(folder: S3Folder, folders: S3Folder[]): S3Folder[] {
     return folders.map(item => {
       if (item.type === 'FOLDER' && item.subFolders) {
         // Recursively process subFolders

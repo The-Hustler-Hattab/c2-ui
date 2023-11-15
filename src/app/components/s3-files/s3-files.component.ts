@@ -38,9 +38,17 @@ ngOnInit(): void {
   this.s3Service.foldersSubject.subscribe((s3folders: S3Folder[]) =>{
       this.folders = s3folders
       console.log(this.folders);
+    }
+    )
+
+    this.s3Service.deleteSubject.subscribe((s3folder: S3Folder) =>{
+
+      this.s3Service.removeFileFromFolders(s3folder, this.filteredFolders)
+      this.s3Service.removeFileFromFolders(s3folder, this.folders)
 
     }
     )
+
 
 
   }
