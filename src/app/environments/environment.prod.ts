@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  rooturl : 'https://budget-spring.mtattab.com'
+  rooturl : 'https://c2-server.mtattab.com',
+  wssurl: 'wss://c2-server.mtattab.com/reverseShellManager'
 };
