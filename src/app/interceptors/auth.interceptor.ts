@@ -24,10 +24,10 @@ export class AuthInterceptor implements HttpInterceptor {
   private handleAccess(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
     // Only add an access token to allowed origins
-    const allowedOrigins = ['http://localhost', 'https://c2.mtattab.com', 'http://127.0.0.1'];
+    const allowedOrigins = ['http://localhost', 'https://c2.mtattab.com', 'http://127.0.0.1','https://c2-server.mtattab.com'];
     if (allowedOrigins.some(url => request.urlWithParams.includes(url))) {
       const accessToken = this.oktaAuth.getAccessToken();
-      // console.log(accessToken);
+      console.log(accessToken);
       
       request = request.clone({
         setHeaders: {
