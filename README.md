@@ -8,7 +8,7 @@ This Angular project is designed for [brief description of the project].
 - [Installation](#installation)
 - [Usage](#usage)
 - [Commands](#commands)
-
+- [C2 Components](#C2-Components)
 
 ## Prerequisites
 
@@ -55,4 +55,8 @@ ng build: Build the project for production.
 ng test: Run unit tests.
 ng e2e: Run end-to-end tests.
 ```
+## C2-Components 
 
+[C2 UI](https://github.com/The-Hustler-Hattab/c2-ui)  
+[C2 Server](https://github.com/The-Hustler-Hattab/C2JavaServer)   
+[C2 Agent](https://github.com/The-Hustler-Hattab/ReverseShellWebSocketAgent)
