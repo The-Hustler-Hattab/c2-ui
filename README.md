@@ -1,27 +1,58 @@
-# C2cUi
+# Angular Project - Command and Control
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+This Angular project is designed for [brief description of the project].
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Commands](#commands)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Prerequisites
 
-## Build
+Before you begin, ensure you have met the following requirements:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Node.js](https://nodejs.org/) installed
+- [Angular CLI](https://cli.angular.io/) installed globally
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Installation
 
-## Running end-to-end tests
+1. Clone the repository:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    ```bash
+    git clone https://github.com/The-Hustler-Hattab/c2-ui.git
+    ```
 
-## Further help
+2. Navigate to the project folder:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    ```bash
+    cd c2-ui
+    ```
+
+3. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+## Usage
+
+To run the project locally, use the following command:
+
+To run the project locally, use the following command:
+
+```bash
+ng serve
+```
+Open your browser and navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+
+## Commands
+```ng serve: Start the development server.
+ng build: Build the project for production.
+ng test: Run unit tests.
+ng e2e: Run end-to-end tests.
+```
+
