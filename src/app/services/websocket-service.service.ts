@@ -31,13 +31,21 @@ export class WebsocketServiceService {
       
       this.socket = new WebSocket(this.wsUrl+'?auth='+token);
 
-
-
+      this.keepAlive(this.socket);
 
       this.socket.addEventListener('message', (event) => {
         this.messageSubject.next(event);
       });
     }
+  }
+  private keepAlive( socket: WebSocket | null ): void{
+      // Send a keep-alive message every 50 seconds
+      const keepAliveInterval = 50 * 1000; // 50 seconds in milliseconds
+      setInterval(() => {
+        if (this.socket !=null && this.socket.readyState === WebSocket.OPEN) {
+          this.socket.send('KEEP_ALIVE');
+        }
+      }, keepAliveInterval);
   }
 
   disconnect() {
