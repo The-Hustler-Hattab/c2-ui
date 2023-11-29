@@ -1,9 +1,10 @@
 version: 0.2
 env:
   variables:
-    CACHE_CONTROL: "86400"
-    S3_BUCKET: "{{S3_BUCKET}}"
-    BUILD_FOLDER: "dist"
+    # CACHE_CONTROL: "86400"
+    # S3_BUCKET: "{{S3_BUCKET}}"
+    BUCKET_URL: "{{BUCKET_URL}}"
+    # BUILD_FOLDER: "dist"
 phases:
   install:
     runtime-versions:
@@ -16,10 +17,11 @@ phases:
       - echo Build started on `date`
       - npm install
       - npm install -g @angular/cli
+      - ng build --configuration production
   post_build:
     commands:
-      - echo Build started on `date`
-      - ng build --configuration production
+      - echo erasing the s3 bucket `date`
+      - aws s3 rm $BUCKET_URL --recursive
 artifacts:
   files:
     - '**/**'
