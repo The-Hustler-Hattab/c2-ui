@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { Observable, Subject, map } from 'rxjs';
 import { PawnedLogItem } from '../models/pawned-logs.model';
 import { S3Folder } from '../models/s3-folder.model';
