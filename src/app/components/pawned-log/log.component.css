@@ -47,7 +47,7 @@
 
 }
 .mat-column-userCurrentWorkingDir    {
-  flex: 0 0 35%;
+  flex: 0 0 55%;
 
 }
 .mat-column-userLanguage    {
@@ -56,6 +56,10 @@
 }
 .mat-column-hasFiles    {
   flex: 0 0 8%;
+
+}
+.mat-column-malwareType    {
+  flex: 0 0 14%;
 
 }
  

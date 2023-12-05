@@ -15,6 +15,7 @@ export interface PawnedLogItem {
     sessionCreatedAt: string;
     sessionClosedAt: string | null;
     publicIp: string | null;
+    malwareType: string | null;
 
   }
 

@@ -34,7 +34,7 @@ export class LogComponent implements  OnInit, AfterViewInit{
   dataSource: MatTableDataSource<PawnedLogItem>;
 
   displayedColumns: string[] = [ 'id','sessionId', 'hasFiles', 'publicIp'
-  , 'osName', 'osVersion', 'osArch', 'userName', 'userHome', 'userCurrentWorkingDir', 'userLanguage'
+  , 'osName', 'osVersion', 'osArch', 'userName', 'userHome', 'userCurrentWorkingDir', 'userLanguage','malwareType'
   , 'sessionCreatedAt', 'sessionClosedAt'];
 
 
@@ -52,6 +52,7 @@ export class LogComponent implements  OnInit, AfterViewInit{
     { name: 'userLanguage', title: 'User Language' },
     { name: 'hasFiles', title: 'HasFiles?' },
     { name: 'sessionFiles', title: 'Session Files' },
+    { name: 'malwareType', title: 'Malware Language' },
     { name: 'sessionCreatedAt', title: 'Session Created At' },
     { name: 'sessionClosedAt', title: 'Session Closed At' },
 
