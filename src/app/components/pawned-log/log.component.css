@@ -62,7 +62,10 @@
   flex: 0 0 14%;
 
 }
- 
+.mat-column-aes256HexKey    {
+  flex: 0 0 45%;
+
+}
  
  
 
