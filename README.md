@@ -1,6 +1,7 @@
 # Angular Project - Command and Control
 
-This Angular project is designed for [brief description of the project].
+
+This Angular project is crafted to oversee compromised computers within a command and control environment. It incorporates Okta authentication, facilitating secure access. The system offers a streamlined process for downloading files that have been exfiltrated from the targets. Additionally, it features a comprehensive log table to record and monitor events. For enhanced control over the botnet, the project includes a user-friendly command line interface.
 
 ## Table of Contents
 
@@ -8,7 +9,7 @@ This Angular project is designed for [brief description of the project].
 - [Installation](#installation)
 - [Usage](#usage)
 - [Commands](#commands)
-- [C2 Components](#C2-Components)
+- [C2 Components](#c2-components)
 
 ## Prerequisites
 
@@ -55,7 +56,7 @@ ng build: Build the project for production.
 ng test: Run unit tests.
 ng e2e: Run end-to-end tests.
 ```
-## C2-Components 
+## c2-components
 
 [C2 UI](https://github.com/The-Hustler-Hattab/c2-ui)  
 [C2 Server](https://github.com/The-Hustler-Hattab/C2JavaServer)   
