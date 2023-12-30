@@ -24,7 +24,7 @@ This Angular project is crafted to oversee compromised computers within a comman
 - **Comprehensive Log Table**: Provides a log table to monitor and record the command and control history.
 
 ![Screenshot 3](./readme/c2-log-tables.png)
-*C2 Log Tables*
+*C2 Log Table*
 
 ## Prerequisites
 
