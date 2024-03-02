@@ -18,6 +18,8 @@ export class LogComponent implements AfterViewInit{
   ngAfterViewInit(): void {
     console.log('log component');
     this.loadComponent('session-logs');
+    // this.loadComponent('cred-files');
+
     }
   
 

@@ -4,16 +4,20 @@
     [value]="logs"
     dataKey="id"
     [showCurrentPageReport]="true"
-    [tableStyle]="{ 'min-width': '50rem' }"
+    [tableStyle]="{ 'min-width': '60rem' }"
     [paginator]="true"
     [rows]="50"
-    [rowsPerPageOptions]="[5, 10, 20, 50, 100, 1000]"
-    [globalFilterFields]="['code', 'name', 'category', 'quantity']"
+    [rowsPerPageOptions]="[5, 10, 20, 50, 100, 500,1000]"
+    [globalFilterFields]="['id','FileName','FileContentType', 'BlobUrl', 'IPAddress', 'Date']"
     selectionMode="single" 
     [scrollable]="true"
     [resizableColumns]="true" 
     columnResizeMode="expand"
     [loading]="loading"
+    [reorderableColumns]="true"
+    [columns]="cols"
+    
+    styleClass="p-datatable-gridlines"
   >
     <ng-template pTemplate="caption">
 
@@ -62,48 +66,42 @@
     </ng-template>
 
 
-    <ng-template pTemplate="header">
+    <ng-template pTemplate="header" let-columns>
       <tr>
-        <th pSortableColumn="id" style="width: 20%">
-            id <p-sortIcon field="id"></p-sortIcon>
+        <th  style="width: 20%" *ngFor="let col of columns" pReorderableColumn [pSortableColumn]="col.field">
+            {{col.header}}             
+            <p-sortIcon (field)="col.header"></p-sortIcon>
         </th>
-        <th pSortableColumn="FileName" style="width: 20%">
-            FileName <p-sortIcon field="FileName"></p-sortIcon>
-        </th>
-        <th pSortableColumn="FileContentType" style="width: 20%">
-            FileContentType <p-sortIcon field="FileContentType"></p-sortIcon>
-        </th>
-        <th pSortableColumn="BlobUrl" style="width: 20%">
-            BlobUrl <p-sortIcon field="BlobUrl"></p-sortIcon>
-        </th>
-        <th pSortableColumn="IPAddress" style="width: 20%">
-            IPAddress <p-sortIcon field="IPAddress"></p-sortIcon>
-        </th>
-        <th pSortableColumn="Date" style="width: 20%">
-            Date <p-sortIcon field="Date"></p-sortIcon>
-        </th>
-        <th pSortableColumn="Download" style="width: 20%">
-            Download <p-sortIcon field="Download"></p-sortIcon>
-        </th>
-      </tr>
+        <th  style="width: 20%" >
+          Download
+      </th>
+    </tr>
+
     </ng-template>
-    <ng-template pTemplate="body" let-log>
-      <tr [pSelectableRow]="log">
+    <ng-template pTemplate="body" let-log let-index="rowIndex" let-columns="columns"  let-rowData>
+
+      <tr [pReorderableRow]="index" [pSelectableRow]="log">
+
+        <td *ngFor="let col of columns">
+            {{rowData[col.field]}}
+            
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="downloadFile(log.FileName)">
+              <i class="fas fa-download"></i> Download
+            </button>
+      </td>
+    </tr>
+      
+      <!-- <tr [pSelectableRow]="log" [pReorderableRow]="index" >
         <td>{{ log.id }}</td>
         <td>{{ log.FileName }}</td>
         <td>{{ log.FileContentType }}</td>
         <td>{{ log.BlobUrl }}</td>
         <td>{{ log.IPAddress }}</td>
         <td>{{ log.Date }}</td>
-        <td>
-            <button type="button" class="btn btn-primary" (click)="downloadFile(log.FileName)">
-                <i class="fas fa-download"></i> Download
-              </button>
-
-        </td>
-
-
-      </tr>
+  
+      </tr> -->
     </ng-template>
   </p-table>
 </div>

@@ -9,21 +9,25 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CredFilesLogService } from 'src/app/services/log/cred-files-log.service';
 import { CredFilesLogsItem } from 'src/app/models/cred-files-logs.model';
 
-
+interface Column {
+  field: string;
+  header: string;
+}
 
 @Component({
   selector: 'app-pass-files',
   templateUrl: './pass-files.component.html',
   styleUrls: ['./pass-files.component.css'],
 })
+
 export class PassFilesComponent implements OnInit {
   @ViewChild('dt1') dt: Table | undefined;
 
   logs: CredFilesLogsItem[] = [];
   loading: boolean = false;
+  cols!: Column[];
 
   constructor(
-    private csvService: NgxCsvParser,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
     private logService: CredFilesLogService
@@ -34,6 +38,18 @@ export class PassFilesComponent implements OnInit {
     );
   }
   ngOnInit() {
+    this.cols = [
+      { header: 'ID', field: 'id' },
+      { header: 'FileName', field: 'FileName' },
+      { header: 'FileContentType', field: 'FileContentType' },
+      { header: 'BlobUrl', field: 'BlobUrl' },
+      { header: 'IPAddress', field: 'IPAddress' },
+      { header: 'Date', field: 'Date' },
+
+
+  ];
+
+
     this.logs = this.logService.logData;
     this.logService.logCredDataSubject.subscribe((data) => {
       this.loading = true;
@@ -65,18 +81,7 @@ export class PassFilesComponent implements OnInit {
     saveAs(blob, 'products.csv');
   }
   exportPdf(): void {
-    const exportColumns = [
-      { header: 'ID', field: 'id' },
-      { header: 'Code', field: 'code' },
-      { header: 'Name', field: 'name' },
-      { header: 'Description', field: 'description' },
-      { header: 'Price', field: 'price' },
-      { header: 'Quantity', field: 'quantity' },
-      { header: 'Inventory Status', field: 'inventoryStatus' },
-      { header: 'Category', field: 'category' },
-      { header: 'Image', field: 'image' },
-      { header: 'Rating', field: 'rating' },
-    ];
+    const exportColumns = this.cols;
 
     import('jspdf').then((jsPDF) => {
       import('jspdf-autotable').then((x) => {
