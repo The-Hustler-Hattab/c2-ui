@@ -11,6 +11,11 @@ This Angular project is crafted to oversee compromised computers within a comman
 - [Commands](#commands)
 - [C2 Components](#c2-components)
 
+## Youtube Demo
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/EsMQl13e8bs/0.jpg)](https://www.youtube.com/watch?v=EsMQl13e8bs&ab_channel=MohammedHattab)
+
+
+
 ## Features
 
 - **Command Line Interface Emulater**: Facilitates a command-line interface for efficiently managing the botnet fleet.
@@ -77,6 +82,7 @@ ng e2e: Run end-to-end tests.
 [C2 Server](https://github.com/The-Hustler-Hattab/C2JavaServer)   
 [C2 Java Agent](https://github.com/The-Hustler-Hattab/ReverseShellWebSocketAgent)  
 [C2 C# .NET Agent (RECOMMENDED)](https://github.com/The-Hustler-Hattab/WebSocketReverseShellDotNet)  
+[Malware Distribution Phishing Page](https://github.com/The-Hustler-Hattab/obs-project-phishing)  
 
 ## Contributing
 Contributions are welcome!
