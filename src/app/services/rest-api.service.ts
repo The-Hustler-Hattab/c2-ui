@@ -78,7 +78,7 @@ export class RestApiService {
 
   }
 
-  private saveFile(blobData: Blob, fileName: string) {
+  public saveFile(blobData: Blob, fileName: string) {
     const downloadLink = document.createElement('a');
     const url = window.URL.createObjectURL(blobData);
     downloadLink.href = url;

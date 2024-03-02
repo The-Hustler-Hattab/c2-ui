@@ -44,7 +44,10 @@ import { FileComponent } from './components/s3-files/file/file.component';
 import { TerminalModule } from 'primeng/terminal';
 import {ToastModule} from 'primeng/toast';
 import { FooterComponent } from './components/footer/footer.component';
-
+import { PassFilesComponent } from './components/pawned-log/pass-files/pass-files.component';
+import { SessionLogsComponent } from './components/pawned-log/session-logs/session-logs.component';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -62,6 +65,8 @@ import { FooterComponent } from './components/footer/footer.component';
     FoldersComponent,
     FileComponent,
     FooterComponent,
+    PassFilesComponent,
+    SessionLogsComponent,
     
 
   ],
@@ -99,6 +104,9 @@ import { FooterComponent } from './components/footer/footer.component';
     MatExpansionModule,
     TerminalModule,
     ToastModule,
+    TableModule,
+    ButtonModule,
+
     
     OAuthModule.forRoot(),
 

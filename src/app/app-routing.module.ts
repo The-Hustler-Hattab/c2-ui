@@ -8,6 +8,7 @@ import { ConsoleComponent } from './components/console/console.component';
 import { ErrorComponent } from './components/error/error.component';
 import { OktaCallbackComponent } from '@okta/okta-angular';
 import { S3FilesComponent } from './components/s3-files/s3-files.component';
+import { SessionLogsComponent } from './components/pawned-log/session-logs/session-logs.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -16,6 +17,8 @@ const routes: Routes = [
   {path:"about", component: AboutComponent},
   {path:"s3-files", component: S3FilesComponent},
   {path:"console", component: ConsoleComponent},
+  {path:"session-logs", component: SessionLogsComponent},
+
   {path: 'page-not-found', component: PageNotFoundComponent},
   {path: 'error', component: ErrorComponent},
   {path: 'callback', component: OktaCallbackComponent},

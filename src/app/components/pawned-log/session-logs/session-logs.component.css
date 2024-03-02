@@ -1,0 +1,101 @@
+
+ 
+
+.mdc-data-table__header-cell:hover{
+    border-right: thick double #4b4b4b;
+    border-left: thick double #4b4b4b;
+  }
+  .mat-column-id  {
+    flex: 0 0 5%;
+  
+  }
+  .mat-column-sessionId  {
+    flex: 0 0 26%;
+  
+  }
+  
+  .mat-column-publicIp {
+    flex: 0 0 10%;
+  
+  }
+  .mat-column-sessionCreatedAt{
+    flex: 0 0 15%;
+  
+  }
+  .mat-column-sessionClosedAt {
+    flex: 0 0 15%;
+  
+  }
+  .mat-column-osName  {
+    flex: 0 0 10%;
+  
+  }
+  .mat-column-osVersion   {
+    flex: 0 0 10%;
+  
+  }
+  .mat-column-osArch    {
+    flex: 0 0 8%;
+  
+  }
+  .mat-column-userName    {
+    flex: 0 0 18%;
+  
+  }
+  .mat-column-userHome    {
+    flex: 0 0 28%;
+  
+  }
+  .mat-column-userCurrentWorkingDir    {
+    flex: 0 0 55%;
+  
+  }
+  .mat-column-userLanguage    {
+    flex: 0 0 13%;
+  
+  }
+  .mat-column-hasFiles    {
+    flex: 0 0 8%;
+  
+  }
+  .mat-column-malwareType    {
+    flex: 0 0 14%;
+  
+  }
+  .mat-column-aes256HexKey    {
+    flex: 0 0 45%;
+  
+  }
+   
+   
+  
+  .paige {
+    background-color: #f5f5dc !important; 
+    cursor: pointer;
+  
+  }
+  
+  
+  
+  .paige:hover  {
+    background-color:  rgb(194, 226, 235) !important;
+  }
+  
+  
+  .margin-change-up{
+    position: relative;
+  
+  }
+  
+  .margin-change{
+    margin-left: 20px;
+  
+    position: relative;
+    bottom: 10px; 
+  }
+  .no-files-message {
+    font-size: 16px;      
+    color: #888;         
+    text-align: center;   
+    margin: 10px 0;       
+  }

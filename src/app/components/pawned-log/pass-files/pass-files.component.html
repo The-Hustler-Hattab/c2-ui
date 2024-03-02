@@ -1,0 +1,109 @@
+<div class="container">
+  <p-table
+    #dt1
+    [value]="logs"
+    dataKey="id"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [paginator]="true"
+    [rows]="50"
+    [rowsPerPageOptions]="[5, 10, 20, 50, 100, 1000]"
+    [globalFilterFields]="['code', 'name', 'category', 'quantity']"
+    selectionMode="single" 
+    [scrollable]="true"
+    [resizableColumns]="true" 
+    columnResizeMode="expand"
+    [loading]="loading"
+  >
+    <ng-template pTemplate="caption">
+
+        <div class="row">
+            <div class="col-md-5">
+                <mat-form-field>
+                    <mat-label>Filter</mat-label>
+                    <div class="row">
+                      <div class="col-md-10">
+                        <input
+                          matInput
+                          (input)="applyFilterGlobal($event, 'contains')"
+                          placeholder="Ex. ium"
+                          #input
+                        />
+                      </div>
+                      <div class="col-md-1">
+                        <mat-icon svgIcon="filter"></mat-icon>
+                      </div>
+                    </div>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-5">
+                <button type="button" class="btn btn-primary mr-2" (click)="exportCSV()">
+                    <i class="fas fa-file"></i> CSV
+                  </button>
+                  <button type="button" class="btn btn-success mr-2" (click)="exportExcel()">
+                    <i class="fas fa-file-excel"></i> XLSX
+                  </button>
+                  <button type="button" class="btn btn-warning mr-2" (click)="exportPdf()">
+                    <i class="fas fa-file-pdf"></i> PDF
+                  </button>
+       
+            </div>
+            <div class="col-md-2">
+                <button mat-fab extended color="primary" id="" (click)="refresh()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                  </button>
+
+            </div>
+        </div>
+
+      
+
+
+    </ng-template>
+
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="id" style="width: 20%">
+            id <p-sortIcon field="id"></p-sortIcon>
+        </th>
+        <th pSortableColumn="FileName" style="width: 20%">
+            FileName <p-sortIcon field="FileName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="FileContentType" style="width: 20%">
+            FileContentType <p-sortIcon field="FileContentType"></p-sortIcon>
+        </th>
+        <th pSortableColumn="BlobUrl" style="width: 20%">
+            BlobUrl <p-sortIcon field="BlobUrl"></p-sortIcon>
+        </th>
+        <th pSortableColumn="IPAddress" style="width: 20%">
+            IPAddress <p-sortIcon field="IPAddress"></p-sortIcon>
+        </th>
+        <th pSortableColumn="Date" style="width: 20%">
+            Date <p-sortIcon field="Date"></p-sortIcon>
+        </th>
+        <th pSortableColumn="Download" style="width: 20%">
+            Download <p-sortIcon field="Download"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-log>
+      <tr [pSelectableRow]="log">
+        <td>{{ log.id }}</td>
+        <td>{{ log.FileName }}</td>
+        <td>{{ log.FileContentType }}</td>
+        <td>{{ log.BlobUrl }}</td>
+        <td>{{ log.IPAddress }}</td>
+        <td>{{ log.Date }}</td>
+        <td>
+            <button type="button" class="btn btn-primary" (click)="downloadFile(log.FileName)">
+                <i class="fas fa-download"></i> Download
+              </button>
+
+        </td>
+
+
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
