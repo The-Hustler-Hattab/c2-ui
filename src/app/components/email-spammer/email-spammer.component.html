@@ -1,0 +1,19 @@
+
+
+
+<nav class="navbar navbar-expand-md">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <a class="navbar-brand" (click)="loadComponent('email-forms')">Email Forms</a>
+        </div>
+        <div class="col">
+          <a class="navbar-brand" (click)="loadComponent('email-tables')">Email Tables</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="row">
+    <div class="col" #dynamicComponentContainer></div>
+  </div>

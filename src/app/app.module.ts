@@ -48,6 +48,17 @@ import { PassFilesComponent } from './components/pawned-log/pass-files/pass-file
 import { SessionLogsComponent } from './components/pawned-log/session-logs/session-logs.component';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import { EmailSpammerComponent } from './components/email-spammer/email-spammer.component';
+import { EmailFormsComponent } from './components/email-spammer/email-forms/email-forms.component';
+import { EmailTablesComponent } from './components/email-spammer/email-tables/email-tables.component';
+import { CreateEmailComponent } from './components/email-spammer/email-forms/create-email/create-email.component';
+import { SendEmailComponent } from './components/email-spammer/email-forms/send-email/send-email.component';
+import { SendSmsComponent } from './components/email-spammer/email-forms/send-sms/send-sms.component';
+import { ResultBoxComponent } from './components/result-box/result-box.component';
+import { EmailSmtpTableComponent } from './components/email-spammer/email-tables/email-smtp-table/email-smtp-table.component';
+import { SmsCarrierTableComponent } from './components/email-spammer/email-tables/sms-carrier-table/sms-carrier-table.component';
+
+
 
 @NgModule({
   declarations: [
@@ -67,7 +78,17 @@ import { ButtonModule } from 'primeng/button';
     FooterComponent,
     PassFilesComponent,
     SessionLogsComponent,
-    
+    EmailSpammerComponent,
+    EmailFormsComponent,
+    EmailTablesComponent,
+    CreateEmailComponent,
+    SendEmailComponent,
+    SendSmsComponent,
+    ResultBoxComponent,
+    EmailSmtpTableComponent,
+    SmsCarrierTableComponent,
+
+
 
   ],
   imports: [

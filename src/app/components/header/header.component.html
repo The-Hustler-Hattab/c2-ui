@@ -21,6 +21,9 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLinkActive="active" routerLink="/logs" *ngIf="(authService.authState$ | async)?.isAuthenticated">Pawned Log</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/email-spammer" *ngIf="(authService.authState$ | async)?.isAuthenticated">Email Spammer</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
                         <div class="dropdown-menu">

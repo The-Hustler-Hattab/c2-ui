@@ -1,0 +1,72 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2 class="mb-4">SMTP Email Add Form</h2>
+      <form (ngSubmit)="submitForm()" #configForm="ngForm">
+        <div class="form-group">
+          <label for="email">Email Address*</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            [(ngModel)]="formData.email"
+            required
+            email
+            #email="ngModel"
+          />
+        </div>
+        <div *ngIf="email.invalid && email.touched" class="text-danger">
+          <span> Email is invalid</span>
+        </div>
+        <div class="form-group">
+          <label for="email_host">Email Host*</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email_host"
+            name="email_host"
+            [(ngModel)]="formData.email_host"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email_pass">Email Password*</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email_pass"
+            name="email_pass"
+            [(ngModel)]="formData.email_pass"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="port">Port</label>
+          <input
+            type="number"
+            class="form-control"
+            id="port"
+            name="port"
+            [(ngModel)]="formData.port"
+          />
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="configForm.invalid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <app-result-box
+  [isSuccessful]="isSubmissionSuccessful"
+  [message]="submitStatus"
+  (closed)="clearSubmitStatus()"
+></app-result-box>
+
+</div>

@@ -9,6 +9,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { OktaCallbackComponent } from '@okta/okta-angular';
 import { S3FilesComponent } from './components/s3-files/s3-files.component';
 import { SessionLogsComponent } from './components/pawned-log/session-logs/session-logs.component';
+import { EmailSpammerComponent } from './components/email-spammer/email-spammer.component';
 
 const routes: Routes = [
   {path:"home", component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:"s3-files", component: S3FilesComponent},
   {path:"console", component: ConsoleComponent},
   {path:"session-logs", component: SessionLogsComponent},
+  {path:"email-spammer", component: EmailSpammerComponent},
 
   {path: 'page-not-found', component: PageNotFoundComponent},
   {path: 'error', component: ErrorComponent},

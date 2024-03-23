@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-md">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <a class="navbar-brand" (click)="loadComponent('create-email')">Create Email</a>
+        </div>
+        <div class="col">
+          <a class="navbar-brand" (click)="loadComponent('send-email')">Send Email</a>
+        </div>
+        <div class="col">
+            <a class="navbar-brand" (click)="loadComponent('send-sms')">Send SMS</a>
+          </div>
+
+      </div>
+    </div>
+  </nav>
+  
+  <div class="row">
+    <div class="col" #dynamicComponentContainer></div>
+    <hr class="mt-3">
+    <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" data-toggle="button" (click)="intializeEmailSpammer()" >Initialize Email Connections</button>
+    </div>
+
+
+    <app-result-box
+    [isSuccessful]="isSubmissionSuccessful"
+    [message]="submitStatus"
+    (closed)="clearSubmitStatus()"
+  ></app-result-box>
+    
+    
+

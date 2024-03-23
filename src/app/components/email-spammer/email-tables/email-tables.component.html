@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-md">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <a class="navbar-brand" (click)="loadComponent('email-smtp-table')">Email SMTP Table</a>
+        </div>
+        <div class="col">
+          <a class="navbar-brand" (click)="loadComponent('sms-carrier-table')">SMS Carrier Table</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="row">
+    <div class="col" #dynamicComponentContainer>
+  </div>
+

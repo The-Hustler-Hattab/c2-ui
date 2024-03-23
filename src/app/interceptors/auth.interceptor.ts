@@ -48,10 +48,11 @@ export class AuthInterceptor implements HttpInterceptor {
         }
       }),
       catchError((error) => {
+        this.loadingSpinner.hide()
+
         // Handle errors here
-        if (error instanceof HttpErrorResponse) {
+        if (error instanceof HttpErrorResponse && (error.status == 500 || error.status == 401)) {
           console.error('HTTP error:', error);
-          this.loadingSpinner.hide()
           this.router.navigate(['/error'], {queryParams: {error: error.message}} )
 
         }

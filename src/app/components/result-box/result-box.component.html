@@ -1,0 +1,22 @@
+
+<div *ngIf="message!=null">
+    <div class="mt-4 result-box">
+        <div
+          [ngClass]="{
+            'alert-success': isSuccessful,
+            'alert-danger': !isSuccessful
+          }"
+          role="alert"
+        >
+          <h4 class="alert-heading">
+            {{ isSuccessful ? "Success!" : "Error!" }}
+          </h4>
+          <p>{{ message }}</p>
+          <hr />
+          <button type="button" class="btn btn-secondary" (click)="onClose()">
+            Close
+          </button>
+        </div>
+      </div>
+
+</div>

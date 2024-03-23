@@ -1,0 +1,5 @@
+.navbar-brand:hover {
+    color: #007bff; /* Change color on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    text-decoration: none; /* Remove underline on hover */
+  }

@@ -29,19 +29,13 @@ export const  ApiConstants = {
 })
 export class RestApiService {
 
-
-
-
   private apiUrl = environment.rooturl;
 
   constructor(private http: HttpClient) { }
 
   getNLogs(count:number ): Observable<PawnedLogItem[]> {
-
     const url = `${this.apiUrl}${ApiConstants.LOGS_API_PATH}${ApiConstants.GET_N_LOGS}?count=${count}`;
     console.log(url);
-  
-
     return this.getLogs(url)
   }
 
