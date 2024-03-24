@@ -2,13 +2,13 @@
     <p-table
       #dt1
       [value]="logs"
-      dataKey="id"
+      dataKey="email"
       [showCurrentPageReport]="true"
       [tableStyle]="{ 'min-width': '60rem' }"
       [paginator]="true"
       [rows]="50"
       [rowsPerPageOptions]="[5, 10, 20, 50, 100, 500,1000]"
-      [globalFilterFields]="['created_by', 'created_at', 'port', 'email_host', 'domain','email']"
+      [globalFilterFields]="['email','created_by', 'created_at', 'port', 'email_host', 'domain']"
       selectionMode="single" 
       [scrollable]="true"
       [resizableColumns]="true" 
@@ -75,5 +75,5 @@
       </tr>
       </ng-template>
     </p-table>
-  </div>
+</div>
   

@@ -25,7 +25,8 @@ export class AuthInterceptor implements HttpInterceptor {
     
     // Only add an access token to allowed origins
     const allowedOrigins = ['http://localhost', 'https://c2.mtattab.com', 'http://127.0.0.1','https://c2-server.mtattab.com',
-    "https://file7exfilterate.azurewebsites.net","https://c2-server-tvan66p23a-uc.a.run.app"];
+    "https://file7exfilterate.azurewebsites.net","https://c2-server-tvan66p23a-uc.a.run.app",
+    "https://email-spammer-tvan66p23a-uc.a.run.app"];
     if (allowedOrigins.some(url => request.urlWithParams.includes(url))) {
       const accessToken = this.oktaAuth.getAccessToken();
       // console.log(accessToken);
